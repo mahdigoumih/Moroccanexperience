@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Moroccan Experience — Morocco, Curated for the World</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root { --terracotta:#C1440E; --terracotta-dark:#9A350A; --ink:#1A1410; --sand:#F5EDD8; --atlas:#2E6B5E; --gold:#D4AF37; --warm-white:#FDFAF5; --muted:#7A6B5A; --border:rgba(26,20,16,0.12); }
+  html { scroll-behavior: smooth; }
+  body { font-family:'DM Sans',sans-serif; background:var(--warm-white); color:var(--ink); font-weight:300; line-height:1.7; overflow-x:hidden; }
+  nav { position:fixed; top:0; left:0; right:0; z-index:100; padding:1.25rem 3rem; display:flex; align-items:center; justify-content:space-between; transition:background 0.4s; }
+  nav.scrolled { background:rgba(253,250,245,0.96); backdrop-filter:blur(12px); border-bottom:1px solid var(--border); }
+  .nav-logo { font-family:'Cormorant Garamond',serif; font-size:1.15rem; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:white; text-decoration:none; transition:color 0.4s; }
+  nav.scrolled .nav-logo { color:var(--ink); }
+  .nav-logo span { color:var(--terracotta); }
+  .nav-links { display:flex; gap:2rem; list-style:none; }
+  .nav-links a { font-size:0.72rem; letter-spacing:0.15em; text-transform:uppercase; text-decoration:none; color:rgba(255,255,255,0.85); font-weight:400; transition:color 0.2s; }
+  nav.scrolled .nav-links a { color:var(--muted); }
+  .nav-links a:hover { color:var(--terracotta) !important; }
+  .nav-cta { padding:0.55rem 1.25rem; border:1px solid rgba(255,255,255,0.5); border-radius:2px; }
+  nav.scrolled .nav-cta { border-color:var(--terracotta); color:var(--terracotta) !important; }
+  .nav-cta:hover { background:var(--terracotta) !important; border-color:var(--terracotta) !important; color:white !important; }
+
+  /* HERO */
+  .hero { height:100vh; min-height:700px; position:relative; display:flex; align-items:flex-end; overflow:hidden; }
+  .hero-bg { position:absolute; inset:0; background:linear-gradient(to bottom,rgba(26,20,16,0.15) 0%,rgba(26,20,16,0.6) 100%), url('https://images.unsplash.com/photo-1548869190-a90e48b0e0e4?w=1800&q=85') center/cover no-repeat; transform:scale(1.04); animation:heroZoom 14s ease-out forwards; }
+  @keyframes heroZoom { from{transform:scale(1.04)} to{transform:scale(1)} }
+  .hero-content { position:relative; z-index:2; padding:0 3rem 5rem; max-width:760px; opacity:0; animation:fadeUp 1.2s 0.4s ease forwards; }
+  @keyframes fadeUp { from{opacity:0;transform:translateY(28px)} to{opacity:1;transform:translateY(0)} }
+  .hero-eyebrow { font-size:0.7rem; letter-spacing:0.35em; text-transform:uppercase; color:var(--gold); margin-bottom:1.25rem; font-weight:400; display:block; }
+  .hero h1 { font-family:'Cormorant Garamond',serif; font-size:clamp(3.2rem,6vw,5.5rem); font-weight:300; line-height:1.05; color:white; margin-bottom:1.5rem; }
+  .hero h1 em { font-style:italic; color:var(--gold); }
+  .hero-sub { font-size:1rem; color:rgba(255,255,255,0.8); max-width:440px; margin-bottom:2.5rem; font-weight:300; }
+  .hero-actions { display:flex; gap:1rem; }
+  .btn-primary { display:inline-block; padding:0.9rem 2.25rem; background:var(--terracotta); color:white; text-decoration:none; font-size:0.75rem; letter-spacing:0.2em; text-transform:uppercase; font-weight:500; border-radius:2px; transition:background 0.3s; }
+  .btn-primary:hover { background:var(--terracotta-dark); }
+  .btn-ghost { display:inline-block; padding:0.9rem 2.25rem; border:1px solid rgba(255,255,255,0.5); color:white; text-decoration:none; font-size:0.75rem; letter-spacing:0.2em; text-transform:uppercase; border-radius:2px; transition:all 0.3s; }
+  .btn-ghost:hover { background:rgba(255,255,255,0.1); }
+  .hero-scroll { position:absolute; bottom:2rem; right:3rem; display:flex; flex-direction:column; align-items:center; gap:0.5rem; color:rgba(255,255,255,0.6); font-size:0.65rem; letter-spacing:0.2em; text-transform:uppercase; z-index:2; }
+  .scroll-line { width:1px; height:48px; background:linear-gradient(to bottom,rgba(255,255,255,0.6),transparent); animation:pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+  /* STATS */
+  .stats-bar { background:var(--ink); padding:2rem 3rem; display:flex; justify-content:center; gap:5rem; }
+  .stat { text-align:center; }
+  .stat-num { font-family:'Cormorant Garamond',serif; font-size:2.5rem; font-weight:300; color:var(--gold); line-height:1; margin-bottom:0.3rem; }
+  .stat-label { font-size:0.65rem; letter-spacing:0.2em; text-transform:uppercase; color:rgba(255,255,255,0.45); }
+
+  /* PHILOSOPHY */
+  .philosophy-section { padding:6rem 3rem; }
+  .philosophy { max-width:1200px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:center; }
+  .philosophy-text p { color:var(--muted); font-size:1rem; line-height:1.85; margin-bottom:1.25rem; }
+  .philosophy-visual { position:relative; height:520px; }
+  .phil-img-main { position:absolute; top:0; right:0; width:82%; height:420px; background:url('https://images.unsplash.com/photo-1553899017-5c7fa319c65d?w=900&q=85') center/cover; border-radius:3px; }
+  .phil-img-accent { position:absolute; bottom:0; left:0; width:52%; height:240px; background:url('https://images.unsplash.com/photo-1512753360435-329c4ec65687?w=600&q=85') center/cover; border-radius:3px; border:6px solid var(--warm-white); }
+  .phil-badge { position:absolute; bottom:2.5rem; right:1rem; background:var(--terracotta); color:white; padding:1rem 1.25rem; border-radius:3px; text-align:center; }
+  .phil-badge-num { font-family:'Cormorant Garamond',serif; font-size:2rem; font-weight:300; line-height:1; }
+  .phil-badge-text { font-size:0.6rem; letter-spacing:0.15em; text-transform:uppercase; opacity:0.85; }
+
+  /* OFFERINGS */
+  .offerings-section { background:var(--sand); padding:6rem 3rem; }
+  .offerings-header { max-width:1200px; margin:0 auto 3.5rem; }
+  .section-eyebrow { font-size:0.65rem; letter-spacing:0.3em; text-transform:uppercase; color:var(--terracotta); font-weight:500; margin-bottom:1rem; }
+  .section-title { font-family:'Cormorant Garamond',serif; font-size:clamp(2rem,3.5vw,3rem); font-weight:300; line-height:1.1; color:var(--ink); margin-bottom:1.25rem; }
+  .section-title em { font-style:italic; color:var(--terracotta); }
+  .offerings-grid { max-width:1200px; margin:0 auto; display:grid; grid-template-columns:repeat(3,1fr); gap:1.5px; background:var(--border); }
+  .offering-card { background:var(--sand); padding:2.5rem 2rem; transition:background 0.3s; }
+  .offering-card:hover { background:white; }
+  .offering-num { font-family:'Cormorant Garamond',serif; font-size:3rem; font-weight:300; color:rgba(193,68,14,0.12); line-height:1; margin-bottom:0.75rem; }
+  .offering-title { font-family:'Cormorant Garamond',serif; font-size:1.4rem; font-weight:400; margin-bottom:0.65rem; color:var(--ink); }
+  .offering-desc { font-size:0.875rem; color:var(--muted); line-height:1.75; }
+  .offering-link { display:inline-block; margin-top:1.25rem; font-size:0.7rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--terracotta); text-decoration:none; font-weight:500; border-bottom:1px solid var(--terracotta); padding-bottom:2px; }
+
+  /* INSPIRED */
+  .inspired-section { background:var(--ink); padding:6rem 3rem; }
+  .inspired-header { max-width:1200px; margin:0 auto 3.5rem; }
+  .inspired-header .section-title { color:white; }
+  .inspired-grid { max-width:1200px; margin:0 auto; display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; }
+  .inspired-card { position:relative; height:340px; border-radius:3px; overflow:hidden; cursor:pointer; }
+  .inspired-card::before { content:''; position:absolute; inset:0; background:linear-gradient(to top,rgba(26,20,16,0.85) 0%,transparent 55%); transition:background 0.3s; }
+  .inspired-card:hover::before { background:linear-gradient(to top,rgba(193,68,14,0.75) 0%,rgba(26,20,16,0.25) 100%); }
+  .ic1{background:url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&q=85') center/cover}
+  .ic2{background:url('https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=600&q=85') center/cover}
+  .ic3{background:url('https://images.unsplash.com/photo-1502680390469-be75c86b636f?w=600&q=85') center/cover}
+  .ic4{background:url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=85') center/cover}
+  .ic5{background:url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=85') center/cover}
+  .ic6{background:url('https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=600&q=85') center/cover}
+  .ic7{background:url('https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=600&q=85') center/cover}
+  .ic8{background:url('https://images.unsplash.com/photo-1539020140153-e479b8c22e70?w=600&q=85') center/cover}
+  .inspired-card-content { position:absolute; bottom:1.5rem; left:1.5rem; right:1.5rem; }
+  .inspired-num { font-size:0.6rem; letter-spacing:0.25em; color:var(--gold); text-transform:uppercase; margin-bottom:0.4rem; }
+  .inspired-title { font-family:'Cormorant Garamond',serif; font-size:1.25rem; font-weight:400; color:white; }
+
+  /* DESTINATIONS */
+  .destinations-section { padding:6rem 3rem; }
+  .destinations-header { max-width:1200px; margin:0 auto 3.5rem; }
+  .destinations-grid { max-width:1200px; margin:0 auto; display:grid; grid-template-columns:repeat(5,1fr); gap:1rem; }
+  .dest-card { border-radius:3px; overflow:hidden; cursor:pointer; text-decoration:none; display:block; transition:transform 0.3s; }
+  .dest-card:hover { transform:translateY(-4px); }
+  .dest-img { height:240px; transition:transform 0.4s; }
+  .dest-card:hover .dest-img { transform:scale(1.04); }
+  .dest-body { padding:0.85rem 0.75rem; background:white; border:1px solid var(--border); border-top:none; }
+  .dest-name { font-family:'Cormorant Garamond',serif; font-size:1.1rem; font-weight:400; color:var(--ink); margin-bottom:0.25rem; }
+  .dest-highlight { font-size:0.68rem; color:var(--muted); }
+
+  /* REVIEWS */
+  .reviews-section { background:var(--terracotta); padding:6rem 3rem; }
+  .reviews-header { max-width:1200px; margin:0 auto 3.5rem; }
+  .reviews-header .section-title { color:white; }
+  .reviews-header .section-eyebrow { color:var(--gold); }
+  .reviews-grid { max-width:1200px; margin:0 auto; display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; }
+  .review-card { background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.2); border-radius:3px; padding:2rem; }
+  .review-stars { color:var(--gold); font-size:0.85rem; margin-bottom:1rem; }
+  .review-text { font-family:'Cormorant Garamond',serif; font-size:1.05rem; font-style:italic; color:rgba(255,255,255,0.92); line-height:1.75; margin-bottom:1.25rem; }
+  .review-author { font-size:0.7rem; letter-spacing:0.15em; text-transform:uppercase; color:rgba(255,255,255,0.55); font-weight:500; }
+  .rating-bar { max-width:1200px; margin:3rem auto 0; display:flex; gap:3rem; padding-top:2.5rem; border-top:1px solid rgba(255,255,255,0.2); align-items:center; }
+  .rating-item { display:flex; align-items:center; gap:1rem; }
+  .rating-num { font-family:'Cormorant Garamond',serif; font-size:2.5rem; font-weight:300; color:white; }
+  .rating-detail { color:rgba(255,255,255,0.6); font-size:0.75rem; line-height:1.5; }
+
+  /* NEWSLETTER */
+  .newsletter { background:var(--ink); padding:4.5rem 3rem; text-align:center; }
+  .newsletter-inner { max-width:520px; margin:0 auto; }
+  .newsletter .section-title { color:white; font-size:2rem; margin-bottom:0.75rem; }
+  .newsletter p { color:rgba(255,255,255,0.5); font-size:0.9rem; margin-bottom:2rem; }
+  .nl-form { display:flex; gap:0.75rem; }
+  .nl-form input { flex:1; padding:0.85rem 1.25rem; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:2px; color:white; font-family:'DM Sans',sans-serif; font-size:0.875rem; outline:none; }
+  .nl-form input::placeholder { color:rgba(255,255,255,0.35); }
+  .nl-form button { padding:0.85rem 1.5rem; background:var(--terracotta); color:white; border:none; border-radius:2px; font-family:'DM Sans',sans-serif; font-size:0.7rem; letter-spacing:0.2em; text-transform:uppercase; cursor:pointer; white-space:nowrap; }
+
+  /* FOOTER */
+  footer { background:var(--ink); border-top:1px solid rgba(255,255,255,0.07); padding:3rem; }
+  .footer-inner { max-width:1200px; margin:0 auto; display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:3rem; margin-bottom:2.5rem; }
+  .footer-brand { font-family:'Cormorant Garamond',serif; font-size:1.1rem; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:white; margin-bottom:1rem; }
+  .footer-brand span { color:var(--terracotta); }
+  .footer-desc { font-size:0.82rem; color:rgba(255,255,255,0.38); line-height:1.8; max-width:260px; }
+  .footer-col-title { font-size:0.65rem; letter-spacing:0.2em; text-transform:uppercase; color:rgba(255,255,255,0.3); font-weight:500; margin-bottom:1.25rem; }
+  .footer-links { list-style:none; display:flex; flex-direction:column; gap:0.65rem; }
+  .footer-links a { color:rgba(255,255,255,0.5); text-decoration:none; font-size:0.85rem; font-weight:300; transition:color 0.2s; }
+  .footer-links a:hover { color:var(--terracotta); }
+  .footer-bottom { max-width:1200px; margin:0 auto; padding-top:2rem; border-top:1px solid rgba(255,255,255,0.08); display:flex; justify-content:space-between; align-items:center; }
+  .footer-copy { font-size:0.75rem; color:rgba(255,255,255,0.22); }
+  .footer-socials { display:flex; gap:1.25rem; }
+  .footer-socials a { font-size:0.7rem; letter-spacing:0.15em; text-transform:uppercase; color:rgba(255,255,255,0.32); text-decoration:none; transition:color 0.2s; }
+  .footer-socials a:hover { color:var(--terracotta); }
+
+  .reveal { opacity:0; transform:translateY(20px); transition:opacity 0.65s ease,transform 0.65s ease; }
+  .reveal.visible { opacity:1; transform:translateY(0); }
+  .r1{transition-delay:0.1s} .r2{transition-delay:0.2s} .r3{transition-delay:0.3s} .r4{transition-delay:0.4s}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="index.html" class="nav-logo">Moroccan<span>Experience</span></a>
+  <ul class="nav-links">
+    <li><a href="destinations.html">Destinations</a></li>
+    <li><a href="offerings.html">Offerings</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="blog.html">Journal</a></li>
+    <li><a href="contact.html" class="nav-cta">Plan Your Trip</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <span class="hero-eyebrow">Est. 2024 · Casablanca, Morocco</span>
+    <h1>Morocco,<br>curated for<br><em>the world.</em></h1>
+    <p class="hero-sub">Bespoke journeys across the most captivating country on earth — from the Sahara to the Atlantic, for every kind of traveler.</p>
+    <div class="hero-actions">
+      <a href="contact.html" class="btn-primary">Plan Your Journey</a>
+      <a href="offerings.html" class="btn-ghost">Explore Offerings</a>
+    </div>
+  </div>
+  <div class="hero-scroll"><div class="scroll-line"></div>Scroll</div>
+</section>
+
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num">5.0</div><div class="stat-label">Average Rating</div></div>
+  <div class="stat"><div class="stat-num">500+</div><div class="stat-label">Travelers Hosted</div></div>
+  <div class="stat"><div class="stat-num">10</div><div class="stat-label">Destinations</div></div>
+  <div class="stat"><div class="stat-num">2030</div><div class="stat-label">FIFA World Cup Ready</div></div>
+</div>
+
+<section class="philosophy-section" id="about">
+  <div class="philosophy">
+    <div class="philosophy-text reveal">
+      <span class="section-eyebrow">Our Philosophy</span>
+      <h2 class="section-title">Travel that changes <em>perspectives</em></h2>
+      <p>We create experiences that open minds and invite guests to build a lasting connection with Morocco. Travel can be more than tourism — it can be a unifying experience that makes the global feel a bit more local.</p>
+      <p>As a curated travel agency rooted in Morocco, our team designs memorable trips custom-built around your objectives. The difference between a good trip and a great trip is attention to detail.</p>
+      <a href="about.html" class="btn-primary" style="margin-top:1rem;">Meet the Team</a>
+    </div>
+    <div class="philosophy-visual reveal r2">
+      <div class="phil-img-main"></div>
+      <div class="phil-img-accent"></div>
+      <div class="phil-badge"><div class="phil-badge-num">10</div><div class="phil-badge-text">Iconic<br>Destinations</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="offerings-section" id="offerings">
+  <div class="offerings-header reveal">
+    <span class="section-eyebrow">Our Offerings</span>
+    <h2 class="section-title">Every kind of <em>journey</em></h2>
+  </div>
+  <div class="offerings-grid">
+    <div class="offering-card reveal"><div class="offering-num">01</div><h3 class="offering-title">Tailored Travel</h3><p class="offering-desc">Fully customized journeys designed around your interests — leather workshops, Sahara stargazing, Berber cooking classes. Your vision, our expertise.</p><a href="offerings.html#tailored" class="offering-link">Inquire Now</a></div>
+    <div class="offering-card reveal r1"><div class="offering-num">02</div><h3 class="offering-title">Affinity Travel</h3><p class="offering-desc">Themed group journeys where like-minded travelers connect through shared passions — cuisine, architecture, wellness, adventure, history.</p><a href="offerings.html#affinity" class="offering-link">Find Your Group</a></div>
+    <div class="offering-card reveal r2"><div class="offering-num">03</div><h3 class="offering-title">Fixed Departures</h3><p class="offering-desc">Small group trips of max 10 travelers. 8-night immersive itinerary, first Saturday every month — no minimum required.</p><a href="offerings.html#departures" class="offering-link">See Departures</a></div>
+    <div class="offering-card reveal"><div class="offering-num">04</div><h3 class="offering-title">MICE & Corporate</h3><p class="offering-desc">We've organized events for Google, Harvard Business School and Estée Lauder. Let us plan your next corporate experience.</p><a href="offerings.html#mice" class="offering-link">Plan Your Event</a></div>
+    <div class="offering-card reveal r1"><div class="offering-num">05</div><h3 class="offering-title">Weddings</h3><p class="offering-desc">From riads to desert camps, Atlantic beaches to mountain gardens — Morocco is the perfect destination for your special day.</p><a href="offerings.html#weddings" class="offering-link">Begin Planning</a></div>
+    <div class="offering-card reveal r2"><div class="offering-num">06</div><h3 class="offering-title">Women's Journeys</h3><p class="offering-desc">All-women group trips offering female explorers security and cultural immersion without compromise. Safe, empowering, unforgettable.</p><a href="offerings.html#women" class="offering-link">Join a Journey</a></div>
+  </div>
+</section>
+
+<section class="inspired-section" id="inspired">
+  <div class="inspired-header reveal">
+    <span class="section-eyebrow" style="color:var(--gold)">Get Inspired</span>
+    <h2 class="section-title">Find your <em>Morocco</em></h2>
+  </div>
+  <div class="inspired-grid">
+    <div class="inspired-card ic1 reveal"><div class="inspired-card-content"><div class="inspired-num">01</div><div class="inspired-title">Cuisine & Souks</div></div></div>
+    <div class="inspired-card ic2 reveal r1"><div class="inspired-card-content"><div class="inspired-num">02</div><div class="inspired-title">Yoga & Wellness</div></div></div>
+    <div class="inspired-card ic3 reveal r2"><div class="inspired-card-content"><div class="inspired-num">03</div><div class="inspired-title">Adventure & Sport</div></div></div>
+    <div class="inspired-card ic4 reveal r3"><div class="inspired-card-content"><div class="inspired-num">04</div><div class="inspired-title">Design & Craft</div></div></div>
+    <div class="inspired-card ic5 reveal"><div class="inspired-card-content"><div class="inspired-num">05</div><div class="inspired-title">Romance</div></div></div>
+    <div class="inspired-card ic6 reveal r1"><div class="inspired-card-content"><div class="inspired-num">06</div><div class="inspired-title">Heritage & History</div></div></div>
+    <div class="inspired-card ic7 reveal r2"><div class="inspired-card-content"><div class="inspired-num">07</div><div class="inspired-title">Sahara & Desert</div></div></div>
+    <div class="inspired-card ic8 reveal r3"><div class="inspired-card-content"><div class="inspired-num">08</div><div class="inspired-title">Photography</div></div></div>
+  </div>
+</section>
+
+<section class="destinations-section" id="destinations">
+  <div class="destinations-header reveal">
+    <span class="section-eyebrow">Destinations</span>
+    <h2 class="section-title">Morocco, <em>explored</em></h2>
+  </div>
+  <div class="destinations-grid">
+    <a href="destination-marrakech.html" class="dest-card reveal"><div class="dest-img" style="background:url('https://images.unsplash.com/photo-1597466599360-3b9775841aec?w=500&q=85') center/cover"></div><div class="dest-body"><div class="dest-name">Marrakech</div><div class="dest-highlight">Medina · Majorelle · Souks</div></div></a>
+    <a href="destination-fes.html" class="dest-card reveal r1"><div class="dest-img" style="background:url('https://images.unsplash.com/photo-1553899017-5c7fa319c65d?w=500&q=85') center/cover"></div><div class="dest-body"><div class="dest-name">Fes</div><div class="dest-highlight">Medieval Medina · Tanneries</div></div></a>
+    <a href="destination-chefchaouen.html" class="dest-card reveal r2"><div class="dest-img" style="background:url('https://images.unsplash.com/photo-1512753360435-329c4ec65687?w=500&q=85') center/cover"></div><div class="dest-body"><div class="dest-name">Chefchaouen</div><div class="dest-highlight">Blue City · Rif Mountains</div></div></a>
+    <a href="destination-essaouira.html" class="dest-card reveal r3"><div class="dest-img" style="background:url('https://images.unsplash.com/photo-1542728928-1413d1894ed1?w=500&q=85') center/cover"></div><div class="dest-body"><div class="dest-name">Essaouira</div><div class="dest-highlight">Atlantic Coast · Kitesurf</div></div></a>
+    <a href="destination-sahara.html" class="dest-card reveal r4"><div class="dest-img" style="background:url('https://images.unsplash.com/photo-1548869190-a90e48b0e0e4?w=500&q=85') center/cover"></div><div class="dest-body"><div class="dest-name">The Sahara</div><div class="dest-highlight">Dunes · Camels · Stars</div></div></a>
+    <a href="destination-casablanca.html" class="dest-card reveal"><div class="dest-img" style="background:url('https://images.unsplash.com/photo-1499810631641-541e76d678a2?w=500&q=85') center/cover"></div><div class="dest-body"><div class="dest-name">Casablanca</div><div class="dest-highlight">Hassan II · Nightlife</div></div></a>
+    <a href="destination-tangier.html" class="dest-card reveal r1"><div class="dest-img" style="background:url('https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=500&q=85') center/cover"></div><div class="dest-body"><div class="dest-name">Tangier</div><div class="dest-highlight">Strait of Gibraltar · Art</div></div></a>
+    <a href="destination-atlas.html" class="dest-card reveal r2"><div class="dest-img" style="background:url('https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=500&q=85') center/cover"></div><div class="dest-body"><div class="dest-name">Atlas Mountains</div><div class="dest-highlight">Berber Villages · Hiking</div></div></a>
+    <a href="destination-ouarzazate.html" class="dest-card reveal r3"><div class="dest-img" style="background:url('https://images.unsplash.com/photo-1551009175-15bdf9dcb580?w=500&q=85') center/cover"></div><div class="dest-body"><div class="dest-name">Ouarzazate</div><div class="dest-highlight">Kasbahs · Film Studios</div></div></a>
+    <a href="destination-rabat.html" class="dest-card reveal r4"><div class="dest-img" style="background:url('https://images.unsplash.com/photo-1563194071697-71c48f0f9dd4?w=500&q=85') center/cover"></div><div class="dest-body"><div class="dest-name">Rabat</div><div class="dest-highlight">Capital · Hassan Tower</div></div></a>
+  </div>
+</section>
+
+<section class="reviews-section">
+  <div class="reviews-header reveal">
+    <span class="section-eyebrow">Testimonials</span>
+    <h2 class="section-title">Don't just take<br><em>our word for it</em></h2>
+  </div>
+  <div class="reviews-grid">
+    <div class="review-card reveal"><div class="review-stars">★★★★★</div><p class="review-text">"I cannot overstate how fantastic the experience was. From the planning to the team to the level of service — this is a company run by locals with deep knowledge of the entire country."</p><div class="review-author">Paula J. — United Kingdom</div></div>
+    <div class="review-card reveal r1"><div class="review-stars">★★★★★</div><p class="review-text">"Amazing trip. They managed all the details and logistics, which made the trip easy to enjoy. I highly recommend Moroccan Experience — they are experts at curating a bespoke itinerary."</p><div class="review-author">Caroline M. — United States</div></div>
+    <div class="review-card reveal r2"><div class="review-stars">★★★★★</div><p class="review-text">"Our three-generation family of eight spent fifteen days on this trip. All six adults agreed it was a trip of a lifetime — and the two children had an absolute blast!"</p><div class="review-author">Jackie S. — Canada</div></div>
+  </div>
+  <div class="rating-bar reveal">
+    <div class="rating-item"><div class="rating-num">5.0</div><div class="rating-detail">Average rating<br>366+ reviews</div></div>
+    <div class="rating-item"><div class="rating-num">4.8</div><div class="rating-detail">Zicasso score<br>298+ reviews</div></div>
+    <div style="margin-left:auto"><a href="contact.html" style="display:inline-block;padding:0.9rem 2rem;border:1px solid rgba(255,255,255,0.4);color:white;text-decoration:none;font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;border-radius:2px">Plan Your Trip</a></div>
+  </div>
+</section>
+
+<section class="newsletter">
+  <div class="newsletter-inner reveal">
+    <span class="section-eyebrow" style="text-align:center;display:block">Monthly Postcard</span>
+    <h2 class="section-title" style="color:white;text-align:center">Stay <em>inspired</em></h2>
+    <p>Curated Morocco travel insights, hidden gems, and exclusive offers — directly to your inbox.</p>
+    <div class="nl-form"><input type="email" placeholder="Your email address"><button>Subscribe</button></div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div><div class="footer-brand">Moroccan<span>Experience</span></div><p class="footer-desc">Morocco, curated for the world. Bespoke journeys designed by locals, for every kind of traveler.</p></div>
+    <div><div class="footer-col-title">Offerings</div><ul class="footer-links"><li><a href="offerings.html#tailored">Tailored Travel</a></li><li><a href="offerings.html#affinity">Affinity Travel</a></li><li><a href="offerings.html#departures">Fixed Departures</a></li><li><a href="offerings.html#mice">Corporate & MICE</a></li><li><a href="offerings.html#weddings">Weddings</a></li></ul></div>
+    <div><div class="footer-col-title">Destinations</div><ul class="footer-links"><li><a href="destination-marrakech.html">Marrakech</a></li><li><a href="destination-fes.html">Fes</a></li><li><a href="destination-sahara.html">The Sahara</a></li><li><a href="destination-chefchaouen.html">Chefchaouen</a></li><li><a href="destinations.html">All Destinations →</a></li></ul></div>
+    <div><div class="footer-col-title">Company</div><ul class="footer-links"><li><a href="about.html">About Us</a></li><li><a href="blog.html">Journal</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><div class="footer-copy">© 2024 MoroccanExperience. All rights reserved.</div><div class="footer-socials"><a href="#">Instagram</a><a href="#">Facebook</a><a href="#">LinkedIn</a></div></div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 60));
+  document.querySelectorAll('.reveal').forEach(el => {
+    new IntersectionObserver(([e]) => { if(e.isIntersecting){e.target.classList.add('visible')} },{threshold:0.1}).observe(el);
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Moroccan Experience</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--t:#C1440E;--td:#9A350A;--ink:#1A1410;--sand:#F5EDD8;--gold:#D4AF37;--ww:#FDFAF5;--m:#7A6B5A;--b:rgba(26,20,16,0.12)}
+body{font-family:'DM Sans',sans-serif;background:var(--ww);color:var(--ink);font-weight:300;line-height:1.7;overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.25rem 3rem;display:flex;align-items:center;justify-content:space-between;background:rgba(253,250,245,0.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--b)}
+.nl{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink);text-decoration:none}
+.nl span{color:var(--t)}
+nav ul{display:flex;gap:2rem;list-style:none}
+nav ul a{font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;text-decoration:none;color:var(--m);transition:color 0.2s}
+nav ul a:hover,nav ul a.active{color:var(--t)}
+.nc{padding:0.55rem 1.25rem;border:1px solid var(--t);color:var(--t)!important;border-radius:2px}
+.main{max-width:1200px;margin:0 auto;padding:8rem 3rem 6rem;display:grid;grid-template-columns:1fr 1.2fr;gap:5rem;align-items:start}
+.ey{font-size:0.65rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--t);font-weight:500;margin-bottom:1rem;display:block}
+h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,4vw,4rem);font-weight:300;line-height:1.05;margin-bottom:1.5rem}
+h1 em{font-style:italic;color:var(--t)}
+.lead{font-size:1rem;color:var(--m);line-height:1.85;margin-bottom:2.5rem}
+.ci{display:flex;flex-direction:column;gap:1.5rem;margin-bottom:3rem}
+.citem{display:flex;flex-direction:column;gap:0.2rem}
+.cl{font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--t);font-weight:500}
+.cv{font-size:0.95rem;color:var(--ink)}
+.cv a{color:var(--ink);text-decoration:none}
+.cv a:hover{color:var(--t)}
+.rating-row{display:flex;gap:2rem}
+.rat{display:flex;align-items:center;gap:0.75rem}
+.rn{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;color:var(--t)}
+.rd{font-size:0.75rem;color:var(--m);line-height:1.5}
+.form-wrap{background:white;border:1px solid var(--b);border-radius:3px;padding:2.5rem}
+.fr{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
+.fg{display:flex;flex-direction:column;gap:0.4rem;margin-bottom:1rem}
+.fg label{font-size:0.62rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--m);font-weight:500}
+.fg input,.fg select,.fg textarea{padding:0.75rem 1rem;border:1px solid var(--b);border-radius:2px;font-family:'DM Sans',sans-serif;font-size:0.875rem;color:var(--ink);background:var(--ww);outline:none;transition:border-color 0.2s;font-weight:300}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--t)}
+.fg textarea{height:130px;resize:vertical}
+.submit{width:100%;padding:1rem;background:var(--t);color:white;border:none;border-radius:2px;font-family:'DM Sans',sans-serif;font-size:0.75rem;letter-spacing:0.2em;text-transform:uppercase;font-weight:500;cursor:pointer;transition:background 0.3s}
+.submit:hover{background:var(--td)}
+.map-section{background:var(--sand);padding:3rem}
+.map-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+.office{background:white;padding:1.75rem;border-radius:3px;border:1px solid var(--b)}
+.office-city{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:400;margin-bottom:0.5rem;color:var(--ink)}
+.office-type{font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--t);margin-bottom:0.75rem}
+.office-detail{font-size:0.875rem;color:var(--m);line-height:1.7}
+footer{background:var(--ink);border-top:1px solid rgba(255,255,255,0.07);padding:3rem}
+.fi{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:2.5rem}
+.fb{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:white;margin-bottom:1rem}
+.fb span{color:var(--t)}
+.fd{font-size:0.82rem;color:rgba(255,255,255,0.38);line-height:1.8;max-width:260px}
+.fct{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.3);font-weight:500;margin-bottom:1.25rem}
+.fl{list-style:none;display:flex;flex-direction:column;gap:0.65rem}
+.fl a{color:rgba(255,255,255,0.5);text-decoration:none;font-size:0.85rem;font-weight:300;transition:color 0.2s}
+.fl a:hover{color:var(--t)}
+.fbot{max-width:1200px;margin:0 auto;padding-top:2rem;border-top:1px solid rgba(255,255,255,0.08);display:flex;justify-content:space-between;align-items:center}
+.fc{font-size:0.75rem;color:rgba(255,255,255,0.22)}
+.fs{display:flex;gap:1.25rem}
+.fs a{font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.32);text-decoration:none;transition:color 0.2s}
+.fs a:hover{color:var(--t)}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity 0.6s ease,transform 0.6s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.r1{transition-delay:0.1s}.r2{transition-delay:0.2s}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nl">Moroccan<span>Experience</span></a>
+  <ul>
+    <li><a href="destinations.html">Destinations</a></li>
+    <li><a href="offerings.html">Offerings</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="blog.html">Journal</a></li>
+    <li><a href="contact.html" class="nc active">Plan Your Trip</a></li>
+  </ul>
+</nav>
+
+<div class="main">
+  <div class="reveal">
+    <span class="ey">Get in touch</span>
+    <h1>Start your <em>journey</em></h1>
+    <p class="lead">Every great trip begins with a conversation. Tell us about your dream Morocco experience and our team will craft a personalized itinerary within 48 hours.</p>
+    <div class="ci">
+      <div class="citem"><span class="cl">Email</span><span class="cv"><a href="mailto:contact@moroccanexperience.com">contact@moroccanexperience.com</a></span></div>
+      <div class="citem"><span class="cl">WhatsApp</span><span class="cv">+212 600 000 000</span></div>
+      <div class="citem"><span class="cl">Phone (US)</span><span class="cv">+1 646 249 8881</span></div>
+      <div class="citem"><span class="cl">Headquarters</span><span class="cv">Casablanca, Morocco</span></div>
+    </div>
+    <div class="rating-row">
+      <div class="rat"><div class="rn">5.0</div><div class="rd">Average<br>366+ reviews</div></div>
+      <div class="rat"><div class="rn">4.8</div><div class="rd">Zicasso<br>298+ reviews</div></div>
+    </div>
+  </div>
+  <div class="form-wrap reveal r1">
+    <div class="fr">
+      <div class="fg"><label>First name</label><input type="text" placeholder="Sarah"></div>
+      <div class="fg"><label>Last name</label><input type="text" placeholder="Johnson"></div>
+    </div>
+    <div class="fg"><label>Email address</label><input type="email" placeholder="sarah@email.com"></div>
+    <div class="fg"><label>Phone / WhatsApp</label><input type="tel" placeholder="+1 ..."></div>
+    <div class="fg"><label>Type of journey</label>
+      <select>
+        <option value="">Select one...</option>
+        <option>Tailored Travel</option>
+        <option>Affinity / Group Travel</option>
+        <option>Fixed Departure</option>
+        <option>Corporate / MICE</option>
+        <option>Wedding</option>
+        <option>Women's Journey</option>
+      </select>
+    </div>
+    <div class="fr">
+      <div class="fg"><label>Travel dates</label><input type="text" placeholder="Month / Year"></div>
+      <div class="fg"><label>Group size</label><input type="number" placeholder="2"></div>
+    </div>
+    <div class="fg"><label>Your message</label><textarea placeholder="Tell us about your dream Morocco trip — destinations, interests, budget range..."></textarea></div>
+    <button class="submit">Send Message</button>
+  </div>
+</div>
+
+<section class="map-section">
+  <div class="map-inner">
+    <div class="office reveal"><div class="office-city">Casablanca</div><div class="office-type">Headquarters</div><div class="office-detail">Morocco HQ<br>contact@moroccanexperience.com<br>+212 600 000 000</div></div>
+    <div class="office reveal r1"><div class="office-city">New York</div><div class="office-type">US Office</div><div class="office-detail">North America inquiries<br>us@moroccanexperience.com<br>+1 646 249 8881</div></div>
+    <div class="office reveal r2"><div class="office-city">Paris</div><div class="office-type">Europe Office</div><div class="office-detail">Europe & French-speaking inquiries<br>europe@moroccanexperience.com<br>+33 1 00 00 00 00</div></div>
+  </div>
+</section>
+
+<footer>
+  <div class="fi">
+    <div><div class="fb">Moroccan<span>Experience</span></div><p class="fd">Morocco, curated for the world. Bespoke journeys designed by locals, for every kind of traveler.</p></div>
+    <div><div class="fct">Offerings</div><ul class="fl"><li><a href="offerings.html#tailored">Tailored Travel</a></li><li><a href="offerings.html#affinity">Affinity Travel</a></li><li><a href="offerings.html#departures">Fixed Departures</a></li><li><a href="offerings.html#mice">Corporate & MICE</a></li><li><a href="offerings.html#weddings">Weddings</a></li></ul></div>
+    <div><div class="fct">Destinations</div><ul class="fl"><li><a href="destination-marrakech.html">Marrakech</a></li><li><a href="destination-fes.html">Fes</a></li><li><a href="destination-sahara.html">The Sahara</a></li><li><a href="destinations.html">All Destinations</a></li></ul></div>
+    <div><div class="fct">Company</div><ul class="fl"><li><a href="about.html">About Us</a></li><li><a href="blog.html">Journal</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+  </div>
+  <div class="fbot"><div class="fc">© 2024 MoroccanExperience. All rights reserved.</div><div class="fs"><a href="#">Instagram</a><a href="#">Facebook</a><a href="#">LinkedIn</a></div></div>
+</footer>
+<script>document.querySelectorAll('.reveal').forEach(el=>new IntersectionObserver(([e])=>{if(e.isIntersecting)e.target.classList.add('visible')},{threshold:0.08}).observe(el));</script>
+</body></html>

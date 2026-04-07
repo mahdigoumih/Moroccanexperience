@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Destinations — Moroccan Experience</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{--t:#C1440E;--td:#9A350A;--ink:#1A1410;--sand:#F5EDD8;--gold:#D4AF37;--ww:#FDFAF5;--m:#7A6B5A;--b:rgba(26,20,16,0.12)}
+  body{font-family:'DM Sans',sans-serif;background:var(--ww);color:var(--ink);font-weight:300;line-height:1.7;overflow-x:hidden}
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.25rem 3rem;display:flex;align-items:center;justify-content:space-between;background:rgba(253,250,245,0.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--b)}
+  .nl{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink);text-decoration:none}
+  .nl span{color:var(--t)}
+  nav ul{display:flex;gap:2rem;list-style:none}
+  nav ul a{font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;text-decoration:none;color:var(--m);transition:color 0.2s}
+  nav ul a:hover,nav ul a.active{color:var(--t)}
+  .nc{padding:0.55rem 1.25rem;border:1px solid var(--t);color:var(--t)!important;border-radius:2px}
+  .nc:hover{background:var(--t)!important;color:white!important}
+  .ph{padding:8rem 3rem 4rem;max-width:1200px;margin:0 auto}
+  .ey{font-size:0.65rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--t);font-weight:500;margin-bottom:1rem;display:block}
+  h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,5vw,4.5rem);font-weight:300;line-height:1.05;margin-bottom:1.25rem}
+  h1 em{font-style:italic;color:var(--t)}
+  .hd{font-size:1rem;color:var(--m);max-width:520px;line-height:1.8}
+  .dg{max-width:1200px;margin:0 auto;padding:0 3rem 6rem;display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+  .dc{display:block;text-decoration:none;border-radius:3px;overflow:hidden;transition:transform 0.3s}
+  .dc:hover{transform:translateY(-5px)}
+  .di{height:300px;position:relative;overflow:hidden}
+  .dib{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform 0.5s}
+  .dc:hover .dib{transform:scale(1.06)}
+  .di::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(26,20,16,0.72) 0%,transparent 55%)}
+  .dbadge{position:absolute;top:1rem;left:1rem;background:var(--t);color:white;font-size:0.58rem;letter-spacing:0.2em;text-transform:uppercase;padding:0.28rem 0.7rem;border-radius:100px;z-index:2}
+  .dci{position:absolute;bottom:1.25rem;left:1.5rem;z-index:2}
+  .dcn{font-family:'Cormorant Garamond',serif;font-size:1.65rem;font-weight:300;color:white;line-height:1}
+  .dcs{font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-top:0.2rem}
+  .dbd{padding:1.25rem 1.25rem 1.5rem;background:white;border:1px solid var(--b);border-top:none}
+  .dd{font-size:0.875rem;color:var(--m);line-height:1.7;margin-bottom:0.85rem}
+  .dm{display:flex;gap:1.5rem;margin-bottom:1rem}
+  .dmi{font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--m)}
+  .dmi strong{color:var(--t);display:block;font-weight:500;font-size:0.6rem;margin-bottom:0.1rem}
+  .dl{font-size:0.68rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--t);text-decoration:none;font-weight:500;border-bottom:1px solid var(--t);padding-bottom:1px}
+  .cta{background:var(--ink);padding:4rem 3rem;text-align:center}
+  .cta h2{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:300;color:white;margin-bottom:0.75rem}
+  .cta h2 em{font-style:italic;color:var(--gold)}
+  .cta p{color:rgba(255,255,255,0.5);font-size:0.9rem;margin-bottom:2rem}
+  .bp{display:inline-block;padding:0.9rem 2.25rem;background:var(--t);color:white;text-decoration:none;font-size:0.75rem;letter-spacing:0.2em;text-transform:uppercase;font-weight:500;border-radius:2px}
+  footer{background:var(--ink);border-top:1px solid rgba(255,255,255,0.07);padding:3rem}
+  .fi{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:2.5rem}
+  .fb{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:white;margin-bottom:1rem}
+  .fb span{color:var(--t)}
+  .fd{font-size:0.82rem;color:rgba(255,255,255,0.38);line-height:1.8;max-width:260px}
+  .fct{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.3);font-weight:500;margin-bottom:1.25rem}
+  .fl{list-style:none;display:flex;flex-direction:column;gap:0.65rem}
+  .fl a{color:rgba(255,255,255,0.5);text-decoration:none;font-size:0.85rem;font-weight:300;transition:color 0.2s}
+  .fl a:hover{color:var(--t)}
+  .fbot{max-width:1200px;margin:0 auto;padding-top:2rem;border-top:1px solid rgba(255,255,255,0.08);display:flex;justify-content:space-between;align-items:center}
+  .fc{font-size:0.75rem;color:rgba(255,255,255,0.22)}
+  .fs{display:flex;gap:1.25rem}
+  .fs a{font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.32);text-decoration:none;transition:color 0.2s}
+  .fs a:hover{color:var(--t)}
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity 0.6s ease,transform 0.6s ease}
+  .reveal.visible{opacity:1;transform:translateY(0)}
+  .r1{transition-delay:0.1s}.r2{transition-delay:0.2s}.r3{transition-delay:0.3s}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nl">Moroccan<span>Experience</span></a>
+  <ul>
+    <li><a href="destinations.html" class="active">Destinations</a></li>
+    <li><a href="offerings.html">Offerings</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="blog.html">Journal</a></li>
+    <li><a href="contact.html" class="nc">Plan Your Trip</a></li>
+  </ul>
+</nav>
+
+<div class="ph reveal">
+  <span class="ey">Where to go</span>
+  <h1>All of <em>Morocco,</em><br>waiting for you</h1>
+  <p class="hd">From imperial cities to Saharan dunes — ten extraordinary destinations, each with its own soul.</p>
+</div>
+
+<div class="dg">
+  <a href="destination-marrakech.html" class="dc reveal"><div class="di"><div class="dib" style="background-image:url('https://images.unsplash.com/photo-1597466599360-3b9775841aec?w=700&q=85')"></div><span class="dbadge">Most Popular</span><div class="dci"><div class="dcn">Marrakech</div><div class="dcs">The Red City</div></div></div><div class="dbd"><p class="dd">A symphony of senses — vibrant souks, Moorish palaces, and the legendary Djemaa el-Fna.</p><div class="dm"><div class="dmi"><strong>Best time</strong>Oct – Apr</div><div class="dmi"><strong>Stay</strong>3–5 days</div></div><span class="dl">Explore →</span></div></a>
+  <a href="destination-fes.html" class="dc reveal r1"><div class="di"><div class="dib" style="background-image:url('https://images.unsplash.com/photo-1553899017-5c7fa319c65d?w=700&q=85')"></div><div class="dci"><div class="dcn">Fes</div><div class="dcs">The Living Museum</div></div></div><div class="dbd"><p class="dd">The world's only intact medieval city — tanneries, madrasas, and alleys unchanged for a millennium.</p><div class="dm"><div class="dmi"><strong>Best time</strong>Mar – May</div><div class="dmi"><strong>Stay</strong>2–3 days</div></div><span class="dl">Explore →</span></div></a>
+  <a href="destination-chefchaouen.html" class="dc reveal r2"><div class="di"><div class="dib" style="background-image:url('https://images.unsplash.com/photo-1512753360435-329c4ec65687?w=700&q=85')"></div><span class="dbadge">Photographer's Dream</span><div class="dci"><div class="dcn">Chefchaouen</div><div class="dcs">The Blue Pearl</div></div></div><div class="dbd"><p class="dd">Cascading powder-blue walls tucked in the Rif Mountains — Morocco's most photogenic gem.</p><div class="dm"><div class="dmi"><strong>Best time</strong>Apr – Jun</div><div class="dmi"><strong>Stay</strong>1–2 days</div></div><span class="dl">Explore →</span></div></a>
+  <a href="destination-sahara.html" class="dc reveal"><div class="di"><div class="dib" style="background-image:url('https://images.unsplash.com/photo-1548869190-a90e48b0e0e4?w=700&q=85')"></div><span class="dbadge">Bucket List</span><div class="dci"><div class="dcn">The Sahara</div><div class="dcs">The Great Desert</div></div></div><div class="dbd"><p class="dd">Sunset camel rides, luxury desert camps under a billion stars, and absolute silence.</p><div class="dm"><div class="dmi"><strong>Best time</strong>Oct – Apr</div><div class="dmi"><strong>Stay</strong>2–3 days</div></div><span class="dl">Explore →</span></div></a>
+  <a href="destination-essaouira.html" class="dc reveal r1"><div class="di"><div class="dib" style="background-image:url('https://images.unsplash.com/photo-1542728928-1413d1894ed1?w=700&q=85')"></div><div class="dci"><div class="dcn">Essaouira</div><div class="dcs">The Wind City</div></div></div><div class="dbd"><p class="dd">UNESCO port city swaying to Gnawa music and Atlantic winds — Morocco's most soulful escape.</p><div class="dm"><div class="dmi"><strong>Best time</strong>May – Sep</div><div class="dmi"><strong>Stay</strong>2–3 days</div></div><span class="dl">Explore →</span></div></a>
+  <a href="destination-atlas.html" class="dc reveal r2"><div class="di"><div class="dib" style="background-image:url('https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=700&q=85')"></div><div class="dci"><div class="dcn">Atlas Mountains</div><div class="dcs">The High Peaks</div></div></div><div class="dbd"><p class="dd">North Africa's highest peaks, Berber villages, and valleys of almond blossom just 60km from Marrakech.</p><div class="dm"><div class="dmi"><strong>Best time</strong>Apr – Jun</div><div class="dmi"><strong>Stay</strong>2–5 days</div></div><span class="dl">Explore →</span></div></a>
+  <a href="destination-casablanca.html" class="dc reveal"><div class="di"><div class="dib" style="background-image:url('https://images.unsplash.com/photo-1499810631641-541e76d678a2?w=700&q=85')"></div><div class="dci"><div class="dcn">Casablanca</div><div class="dcs">The White City</div></div></div><div class="dbd"><p class="dd">Morocco's cosmopolitan heart — Art Deco boulevards and the world's third-largest mosque on the Atlantic.</p><div class="dm"><div class="dmi"><strong>Best time</strong>Year-round</div><div class="dmi"><strong>Stay</strong>1–2 days</div></div><span class="dl">Explore →</span></div></a>
+  <a href="destination-tangier.html" class="dc reveal r1"><div class="di"><div class="dib" style="background-image:url('https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=700&q=85')"></div><div class="dci"><div class="dcn">Tangier</div><div class="dcs">The Gateway</div></div></div><div class="dbd"><p class="dd">Where two seas meet — a city that inspired Matisse, Kerouac, and the Rolling Stones.</p><div class="dm"><div class="dmi"><strong>Best time</strong>Apr – Oct</div><div class="dmi"><strong>Stay</strong>1–2 days</div></div><span class="dl">Explore →</span></div></a>
+  <a href="destination-ouarzazate.html" class="dc reveal r2"><div class="di"><div class="dib" style="background-image:url('https://images.unsplash.com/photo-1551009175-15bdf9dcb580?w=700&q=85')"></div><span class="dbadge">Film Set</span><div class="dci"><div class="dcn">Ouarzazate</div><div class="dcs">Morocco's Hollywood</div></div></div><div class="dbd"><p class="dd">Ancient kasbahs that starred in Game of Thrones, rose valleys, and the Saharan gateway.</p><div class="dm"><div class="dmi"><strong>Best time</strong>Mar – May</div><div class="dmi"><strong>Stay</strong>1–2 days</div></div><span class="dl">Explore →</span></div></a>
+  <a href="destination-rabat.html" class="dc reveal r1" style="grid-column:2"><div class="di"><div class="dib" style="background-image:url('https://images.unsplash.com/photo-1563194071697-71c48f0f9dd4?w=700&q=85')"></div><span class="dbadge">Hidden Gem</span><div class="dci"><div class="dcn">Rabat</div><div class="dcs">The Royal Capital</div></div></div><div class="dbd"><p class="dd">Morocco's graceful, uncrowded capital — UNESCO kasbahs and a medina that still belongs to its people.</p><div class="dm"><div class="dmi"><strong>Best time</strong>Year-round</div><div class="dmi"><strong>Stay</strong>1–2 days</div></div><span class="dl">Explore →</span></div></a>
+</div>
+
+<div class="cta reveal">
+  <h2>Not sure where to <em>start?</em></h2>
+  <p>Our local experts will help you build the perfect multi-destination itinerary.</p>
+  <a href="contact.html" class="bp">Talk to an Expert</a>
+</div>
+
+<footer>
+  <div class="fi">
+    <div><div class="fb">Moroccan<span>Experience</span></div><p class="fd">Morocco, curated for the world.</p></div>
+    <div><div class="fct">Offerings</div><ul class="fl"><li><a href="offerings.html">All Offerings</a></li><li><a href="offerings.html#tailored">Tailored Travel</a></li><li><a href="offerings.html#mice">Corporate & MICE</a></li></ul></div>
+    <div><div class="fct">Destinations</div><ul class="fl"><li><a href="destination-marrakech.html">Marrakech</a></li><li><a href="destination-sahara.html">Sahara</a></li><li><a href="destination-fes.html">Fes</a></li></ul></div>
+    <div><div class="fct">Company</div><ul class="fl"><li><a href="about.html">About Us</a></li><li><a href="blog.html">Journal</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+  </div>
+  <div class="fbot"><div class="fc">© 2024 MoroccanExperience. All rights reserved.</div><div class="fs"><a href="#">Instagram</a><a href="#">Facebook</a><a href="#">LinkedIn</a></div></div>
+</footer>
+<script>document.querySelectorAll('.reveal').forEach(el=>new IntersectionObserver(([e])=>{if(e.isIntersecting)e.target.classList.add('visible')},{threshold:0.08}).observe(el));</script>
+</body></html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us — Moroccan Experience</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--t:#C1440E;--td:#9A350A;--ink:#1A1410;--sand:#F5EDD8;--gold:#D4AF37;--ww:#FDFAF5;--m:#7A6B5A;--b:rgba(26,20,16,0.12)}
+body{font-family:'DM Sans',sans-serif;background:var(--ww);color:var(--ink);font-weight:300;line-height:1.7;overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.25rem 3rem;display:flex;align-items:center;justify-content:space-between;background:rgba(253,250,245,0.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--b)}
+.nl{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink);text-decoration:none}
+.nl span{color:var(--t)}
+nav ul{display:flex;gap:2rem;list-style:none}
+nav ul a{font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;text-decoration:none;color:var(--m);transition:color 0.2s}
+nav ul a:hover,nav ul a.active{color:var(--t)}
+.nc{padding:0.55rem 1.25rem;border:1px solid var(--t);color:var(--t)!important;border-radius:2px}
+.nc:hover{background:var(--t)!important;color:white!important}
+.hero{height:70vh;min-height:500px;position:relative;display:flex;align-items:flex-end;overflow:hidden}
+.hbg{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(26,20,16,0.1) 0%,rgba(26,20,16,0.7) 100%),url('https://images.unsplash.com/photo-1553899017-5c7fa319c65d?w=1800&q=85') center/cover no-repeat}
+.hc{position:relative;z-index:2;padding:0 3rem 4rem;opacity:0;animation:fu 1s 0.3s ease forwards}
+@keyframes fu{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.ey{font-size:0.65rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:1rem;display:block}
+h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,5vw,4.5rem);font-weight:300;line-height:1.05;color:white;margin-bottom:1rem}
+h1 em{font-style:italic;color:var(--gold)}
+.mission{max-width:1200px;margin:0 auto;padding:6rem 3rem;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.mission-text p{font-size:1rem;color:var(--m);line-height:1.85;margin-bottom:1.25rem}
+.mission-img{height:500px;background:url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=85') center/cover;border-radius:3px}
+.values{background:var(--sand);padding:6rem 3rem}
+.values-inner{max-width:1200px;margin:0 auto}
+.values-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:3rem}
+.val{background:white;padding:2rem;border-radius:3px;border:1px solid var(--b)}
+.val-icon{font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:300;color:var(--t);line-height:1;margin-bottom:1rem}
+.val-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:400;margin-bottom:0.65rem}
+.val-desc{font-size:0.875rem;color:var(--m);line-height:1.75}
+.st{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3.5vw,3rem);font-weight:300;line-height:1.1;color:var(--ink);margin-bottom:1.25rem}
+.st em{font-style:italic;color:var(--t)}
+.section-eyebrow{font-size:0.65rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--t);font-weight:500;margin-bottom:1rem;display:block}
+.team{padding:6rem 3rem}
+.team-inner{max-width:1200px;margin:0 auto}
+.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:3rem}
+.member{text-align:center}
+.member-img{width:100%;aspect-ratio:1;background-size:cover;background-position:center;border-radius:3px;margin-bottom:1.25rem}
+.member-name{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:400;color:var(--ink);margin-bottom:0.25rem}
+.member-role{font-size:0.68rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--t);font-weight:500;margin-bottom:0.5rem}
+.member-bio{font-size:0.8rem;color:var(--m);line-height:1.65}
+.partners{background:var(--ink);padding:4rem 3rem;text-align:center}
+.partners h2{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:300;color:rgba(255,255,255,0.55);margin-bottom:2.5rem}
+.partners-row{display:flex;gap:3rem;justify-content:center;align-items:center;flex-wrap:wrap}
+.partner-name{font-size:0.7rem;letter-spacing:0.25em;text-transform:uppercase;color:rgba(255,255,255,0.35);font-weight:500}
+.join{background:var(--t);padding:5rem 3rem;text-align:center}
+.join h2{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:300;color:white;margin-bottom:1rem}
+.join h2 em{font-style:italic}
+.join p{color:rgba(255,255,255,0.75);max-width:480px;margin:0 auto 2rem;font-size:0.95rem}
+.bw{display:inline-block;padding:0.9rem 2.25rem;border:1px solid rgba(255,255,255,0.5);color:white;text-decoration:none;font-size:0.75rem;letter-spacing:0.2em;text-transform:uppercase;border-radius:2px}
+footer{background:var(--ink);border-top:1px solid rgba(255,255,255,0.07);padding:3rem}
+.fi{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:2.5rem}
+.fb{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:white;margin-bottom:1rem}
+.fb span{color:var(--t)}
+.fd{font-size:0.82rem;color:rgba(255,255,255,0.38);line-height:1.8;max-width:260px}
+.fct{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.3);font-weight:500;margin-bottom:1.25rem}
+.fl{list-style:none;display:flex;flex-direction:column;gap:0.65rem}
+.fl a{color:rgba(255,255,255,0.5);text-decoration:none;font-size:0.85rem;font-weight:300;transition:color 0.2s}
+.fl a:hover{color:var(--t)}
+.fbot{max-width:1200px;margin:0 auto;padding-top:2rem;border-top:1px solid rgba(255,255,255,0.08);display:flex;justify-content:space-between;align-items:center}
+.fc{font-size:0.75rem;color:rgba(255,255,255,0.22)}
+.fs{display:flex;gap:1.25rem}
+.fs a{font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.32);text-decoration:none;transition:color 0.2s}
+.fs a:hover{color:var(--t)}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity 0.6s ease,transform 0.6s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.r1{transition-delay:0.1s}.r2{transition-delay:0.2s}.r3{transition-delay:0.3s}.r4{transition-delay:0.35s}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nl">Moroccan<span>Experience</span></a>
+  <ul>
+    <li><a href="destinations.html">Destinations</a></li>
+    <li><a href="offerings.html">Offerings</a></li>
+    <li><a href="about.html" class="active">About</a></li>
+    <li><a href="blog.html">Journal</a></li>
+    <li><a href="contact.html" class="nc">Plan Your Trip</a></li>
+  </ul>
+</nav>
+
+<div class="hero">
+  <div class="hbg"></div>
+  <div class="hc">
+    <span class="ey">Who we are</span>
+    <h1>Changing <em>perspectives</em><br>one journey at a time</h1>
+  </div>
+</div>
+
+<section class="mission">
+  <div class="reveal">
+    <span class="section-eyebrow">Our Mission</span>
+    <h2 class="st">Travel that makes the <em>world smaller</em></h2>
+    <p class="mission-text" style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-style:italic;line-height:1.65;color:var(--ink);margin-bottom:1.5rem">We are in the business of changing perspectives.</p>
+    <p style="font-size:1rem;color:var(--m);line-height:1.85;margin-bottom:1.25rem">We create experiences that open minds and invite guests to build a lasting connection with our home. In this way travel can be more than tourism — it can be a unifying experience that makes the global feel a bit more local.</p>
+    <p style="font-size:1rem;color:var(--m);line-height:1.85;margin-bottom:1.25rem">As a leading provider of curated and authentic travel across Morocco, our diverse team of travel professionals have the experience to design memorable trips custom-built around your objectives.</p>
+    <p style="font-size:1rem;color:var(--m);line-height:1.85">The difference between a good trip and a great trip is attention to detail — and we work to give all our travelers the highest level of personalized service and flawless execution.</p>
+  </div>
+  <div class="mission-img reveal r2"></div>
+</section>
+
+<section class="values">
+  <div class="values-inner reveal">
+    <span class="section-eyebrow">What drives us</span>
+    <h2 class="st">Our <em>values</em></h2>
+    <div class="values-grid">
+      <div class="val reveal r1"><div class="val-icon">01</div><h3 class="val-title">Local Expertise</h3><p class="val-desc">Born and raised in Morocco, our team has the insider knowledge that no guidebook can provide — the hidden riads, the local tables, the roads less traveled.</p></div>
+      <div class="val reveal r2"><div class="val-icon">02</div><h3 class="val-title">Attention to Detail</h3><p class="val-desc">We believe flawless execution is the foundation of extraordinary travel. Every element of your journey is planned with precision and care.</p></div>
+      <div class="val reveal r3"><div class="val-icon">03</div><h3 class="val-title">Positive Impact</h3><p class="val-desc">We hire the best local talent and partner with businesses that share our desire to play an active role in Morocco's sustainable development.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="team">
+  <div class="team-inner reveal">
+    <span class="section-eyebrow">The team</span>
+    <h2 class="st">The passionate people<br>behind your <em>journey</em></h2>
+    <div class="team-grid">
+      <div class="member reveal"><div class="member-img" style="background-image:url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80')"></div><div class="member-name">Hicham</div><div class="member-role">Co-founder</div><p class="member-bio">Grew up in Casablanca, studied at Princeton, worked at Google, MBA at Harvard. Equal passion for drumming and Moroccan mint tea.</p></div>
+      <div class="member reveal r1"><div class="member-img" style="background-image:url('https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80')"></div><div class="member-name">Ghassan</div><div class="member-role">Co-founder</div><p class="member-bio">Explored 60+ countries. Mines Paris, Morgan Stanley, McKinsey, Harvard MBA as a Fulbright scholar. Cinephile and puzzle solver.</p></div>
+      <div class="member reveal r2"><div class="member-img" style="background-image:url('https://images.unsplash.com/photo-1494790108755-2616b612b5bc?w=400&q=80')"></div><div class="member-name">Maryama</div><div class="member-role">General Manager</div><p class="member-bio">4 years in business development, now leading all operations. Ensures every trip is delivered with the signature MoroccanExperience touch.</p></div>
+      <div class="member reveal r3"><div class="member-img" style="background-image:url('https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&q=80')"></div><div class="member-name">Salima</div><div class="member-role">Operations Director</div><p class="member-bio">Master's in Hospitality Management. Ensures no detail is overlooked. Dedicated to local NGO education work in rural Morocco.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="partners reveal">
+  <h2>Trusted by the world's best travel networks</h2>
+  <div class="partners-row">
+    <span class="partner-name">Virtuoso</span>
+    <span class="partner-name">Zicasso</span>
+    <span class="partner-name">Condé Nast Traveler</span>
+    <span class="partner-name">ILTM</span>
+    <span class="partner-name">Wendy Perrin</span>
+    <span class="partner-name">IGLTA</span>
+  </div>
+</section>
+
+<section class="join reveal">
+  <h2>Join our <em>team</em></h2>
+  <p>We're always looking for passionate, dynamic people. If you love travel and culture, we'd love to hear from you.</p>
+  <a href="mailto:joinus@moroccanexperience.com" class="bw">Send Your Resume</a>
+</section>
+
+<footer>
+  <div class="fi">
+    <div><div class="fb">Moroccan<span>Experience</span></div><p class="fd">Morocco, curated for the world. Bespoke journeys designed by locals, for every kind of traveler.</p></div>
+    <div><div class="fct">Offerings</div><ul class="fl"><li><a href="offerings.html#tailored">Tailored Travel</a></li><li><a href="offerings.html#affinity">Affinity Travel</a></li><li><a href="offerings.html#departures">Fixed Departures</a></li><li><a href="offerings.html#mice">Corporate & MICE</a></li><li><a href="offerings.html#weddings">Weddings</a></li></ul></div>
+    <div><div class="fct">Destinations</div><ul class="fl"><li><a href="destination-marrakech.html">Marrakech</a></li><li><a href="destination-fes.html">Fes</a></li><li><a href="destination-sahara.html">The Sahara</a></li><li><a href="destinations.html">All Destinations</a></li></ul></div>
+    <div><div class="fct">Company</div><ul class="fl"><li><a href="about.html">About Us</a></li><li><a href="blog.html">Journal</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+  </div>
+  <div class="fbot"><div class="fc">© 2024 MoroccanExperience. All rights reserved.</div><div class="fs"><a href="#">Instagram</a><a href="#">Facebook</a><a href="#">LinkedIn</a></div></div>
+</footer>
+<script>document.querySelectorAll('.reveal').forEach(el=>new IntersectionObserver(([e])=>{if(e.isIntersecting)e.target.classList.add('visible')},{threshold:0.08}).observe(el));</script>
+</body></html>

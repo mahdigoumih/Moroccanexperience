@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Casablanca — Moroccan Experience</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{--terracotta:#C1440E;--terracotta-dark:#9A350A;--ink:#1A1410;--sand:#F5EDD8;--gold:#D4AF37;--warm-white:#FDFAF5;--muted:#7A6B5A;--border:rgba(26,20,16,0.12)}
+  html{scroll-behavior:smooth}
+  body{font-family:'DM Sans',sans-serif;background:var(--warm-white);color:var(--ink);font-weight:300;line-height:1.7;overflow-x:hidden}
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.25rem 3rem;display:flex;align-items:center;justify-content:space-between;background:rgba(253,250,245,0.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+  .nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink);text-decoration:none}
+  .nav-logo span{color:var(--terracotta)}
+  .nav-links{display:flex;gap:2rem;list-style:none}
+  .nav-links a{font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;text-decoration:none;color:var(--muted);font-weight:400;transition:color 0.2s}
+  .nav-links a:hover{color:var(--terracotta)}
+  .nav-cta{padding:0.55rem 1.25rem;border:1px solid var(--terracotta);color:var(--terracotta)!important;border-radius:2px}
+  .nav-cta:hover{background:var(--terracotta)!important;color:white!important}
+  .dest-hero{height:85vh;min-height:560px;position:relative;display:flex;align-items:flex-end;overflow:hidden;margin-top:0}
+  .dest-hero-bg{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(26,20,16,0.1) 0%,rgba(26,20,16,0.65) 100%),url('https://images.unsplash.com/photo-1499810631641-541e76d678a2?w=1800&q=85') center/cover no-repeat}
+  .dest-hero-content{position:relative;z-index:2;padding:0 3rem 4rem;max-width:860px}
+  .back-link{display:inline-flex;align-items:center;gap:0.5rem;font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.6);text-decoration:none;margin-bottom:1.5rem;transition:color 0.2s}
+  .back-link:hover{color:white}
+  .dest-tagline{font-size:0.7rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:0.75rem;display:block}
+  .dest-hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,5.5vw,5rem);font-weight:300;line-height:1.05;color:white;margin-bottom:1rem}
+  .dest-hero p{font-size:1rem;color:rgba(255,255,255,0.8);max-width:500px;margin-bottom:2rem}
+  .btn-primary{display:inline-block;padding:0.9rem 2.25rem;background:var(--terracotta);color:white;text-decoration:none;font-size:0.75rem;letter-spacing:0.2em;text-transform:uppercase;font-weight:500;border-radius:2px;transition:background 0.3s}
+  .btn-primary:hover{background:var(--terracotta-dark)}
+  .btn-outline{display:inline-block;padding:0.9rem 2.25rem;border:1px solid rgba(255,255,255,0.5);color:white;text-decoration:none;font-size:0.75rem;letter-spacing:0.2em;text-transform:uppercase;border-radius:2px;transition:all 0.3s}
+  .btn-outline:hover{background:rgba(255,255,255,0.1)}
+  .meta-bar{background:var(--ink);padding:1.5rem 3rem;display:flex;gap:3rem;justify-content:center}
+  .meta-item{text-align:center}
+  .meta-label{font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:0.25rem}
+  .meta-value{font-size:0.875rem;color:rgba(255,255,255,0.85);font-weight:400}
+  .content-section{max-width:1200px;margin:0 auto;padding:5rem 3rem}
+  .content-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+  .content-desc{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:300;line-height:1.65;color:var(--ink);margin-bottom:2rem;font-style:italic}
+  .content-body{font-size:0.975rem;color:var(--muted);line-height:1.85;margin-bottom:1.5rem}
+  .section-eyebrow{font-size:0.65rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--terracotta);font-weight:500;margin-bottom:1rem;display:block}
+  .section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3vw,2.8rem);font-weight:300;line-height:1.1;color:var(--ink);margin-bottom:1.5rem}
+  .section-title em{font-style:italic;color:var(--terracotta)}
+  .highlights-section{background:var(--sand);padding:5rem 3rem}
+  .highlights-inner{max-width:1200px;margin:0 auto}
+  .highlights-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2.5rem}
+  .highlight-item{background:white;padding:1.5rem;border-radius:3px;border:1px solid var(--border)}
+  .highlight-num{font-family:'Cormorant Garamond',serif;font-size:1.75rem;font-weight:300;color:rgba(193,68,14,0.2);line-height:1;margin-bottom:0.5rem}
+  .highlight-text{font-size:0.9rem;color:var(--ink);font-weight:400}
+  .img-mosaic{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+  .img-mosaic img{width:100%;height:220px;object-fit:cover;border-radius:3px}
+  .img-mosaic .tall{height:460px;grid-row:span 2}
+  .quote-section{background:var(--terracotta);padding:4rem 3rem;text-align:center}
+  .quote-text{font-family:'Cormorant Garamond',serif;font-size:clamp(1.4rem,2.5vw,2rem);font-weight:300;font-style:italic;color:white;max-width:700px;margin:0 auto 1.5rem;line-height:1.5}
+  .quote-dash{width:40px;height:1px;background:rgba(255,255,255,0.4);margin:0 auto 1.5rem}
+  .cta-section{padding:5rem 3rem;text-align:center;background:var(--warm-white)}
+  .cta-inner{max-width:600px;margin:0 auto}
+  .cta-inner h2{font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:300;margin-bottom:1rem}
+  .cta-inner h2 em{font-style:italic;color:var(--terracotta)}
+  .cta-inner p{color:var(--muted);font-size:0.95rem;margin-bottom:2rem}
+  .cta-btns{display:flex;gap:1rem;justify-content:center}
+  .more-dest{padding:4rem 3rem;background:var(--sand)}
+  .more-dest-inner{max-width:1200px;margin:0 auto}
+  .dest-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:2.5rem}
+  .mini-dest{text-decoration:none;display:block;border-radius:3px;overflow:hidden;transition:transform 0.3s}
+  .mini-dest:hover{transform:translateY(-3px)}
+  .mini-dest-img{height:160px;background-size:cover;background-position:center}
+  .mini-dest-body{padding:0.75rem;background:white;border:1px solid var(--border);border-top:none}
+  .mini-dest-name{font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:400;color:var(--ink)}
+  footer{background:var(--ink);border-top:1px solid rgba(255,255,255,0.07);padding:3rem}
+  .footer-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:2.5rem}
+  .footer-brand{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:white;margin-bottom:1rem}
+  .footer-brand span{color:var(--terracotta)}
+  .footer-desc{font-size:0.82rem;color:rgba(255,255,255,0.38);line-height:1.8;max-width:260px}
+  .footer-col-title{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.3);font-weight:500;margin-bottom:1.25rem}
+  .footer-links{list-style:none;display:flex;flex-direction:column;gap:0.65rem}
+  .footer-links a{color:rgba(255,255,255,0.5);text-decoration:none;font-size:0.85rem;font-weight:300;transition:color 0.2s}
+  .footer-links a:hover{color:var(--terracotta)}
+  .footer-bottom{max-width:1200px;margin:0 auto;padding-top:2rem;border-top:1px solid rgba(255,255,255,0.08);display:flex;justify-content:space-between;align-items:center}
+  .footer-copy{font-size:0.75rem;color:rgba(255,255,255,0.22)}
+  .footer-socials{display:flex;gap:1.25rem}
+  .footer-socials a{font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.32);text-decoration:none;transition:color 0.2s}
+  .footer-socials a:hover{color:var(--terracotta)}
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity 0.6s ease,transform 0.6s ease}
+  .reveal.visible{opacity:1;transform:translateY(0)}
+  .r1{transition-delay:0.1s}.r2{transition-delay:0.2s}.r3{transition-delay:0.3s}
+
+.gallery-section{padding:5rem 3rem;background:var(--sand)}
+.gallery-inner{max-width:1200px;margin:0 auto}
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0.75rem;margin-top:2.5rem}
+.gallery-item{position:relative;overflow:hidden;border-radius:3px;cursor:zoom-in}
+.gallery-item:nth-child(1){grid-column:span 2;height:320px}
+.gallery-item:nth-child(2){height:320px}
+.gallery-item:nth-child(3){height:220px}
+.gallery-item:nth-child(4){height:220px}
+.gallery-item:nth-child(5){grid-column:span 2;height:220px}
+.gallery-item:nth-child(6),.gallery-item:nth-child(7),.gallery-item:nth-child(8),.gallery-item:nth-child(9){height:200px}
+.gallery-img{width:100%;height:100%;object-fit:cover;transition:transform 0.5s ease}
+.gallery-item:hover .gallery-img{transform:scale(1.06)}
+.gallery-overlay{position:absolute;inset:0;background:rgba(26,20,16,0);transition:background 0.3s;display:flex;align-items:center;justify-content:center}
+.gallery-item:hover .gallery-overlay{background:rgba(26,20,16,0.25)}
+.gallery-caption{position:absolute;bottom:0;left:0;right:0;padding:0.75rem 1rem;background:linear-gradient(to top,rgba(26,20,16,0.7) 0%,transparent 100%);opacity:0;transition:opacity 0.3s}
+.gallery-item:hover .gallery-caption{opacity:1}
+.gallery-caption-text{font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.85)}
+.lightbox{display:none;position:fixed;inset:0;background:rgba(26,20,16,0.95);z-index:1000;align-items:center;justify-content:center;cursor:zoom-out}
+.lightbox.active{display:flex}
+.lightbox img{max-width:90vw;max-height:90vh;object-fit:contain;border-radius:3px}
+.lightbox-close{position:absolute;top:2rem;right:2rem;color:rgba(255,255,255,0.7);font-size:1.5rem;cursor:pointer;background:none;border:none;line-height:1}
+.lightbox-prev,.lightbox-next{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;font-size:1.2rem;padding:0.75rem 1rem;cursor:pointer;border-radius:2px;transition:background 0.2s}
+.lightbox-prev{left:2rem}
+.lightbox-next{right:2rem}
+.lightbox-prev:hover,.lightbox-next:hover{background:rgba(255,255,255,0.2)}
+
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Moroccan<span>Experience</span></a>
+  <ul class="nav-links">
+    <li><a href="destinations.html">Destinations</a></li>
+    <li><a href="offerings.html">Offerings</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="blog.html">Journal</a></li>
+    <li><a href="contact.html" class="nav-cta">Plan Your Trip</a></li>
+  </ul>
+</nav>
+
+<div class="dest-hero">
+  <div class="dest-hero-bg"></div>
+  <div class="dest-hero-content">
+    <a href="destinations.html" class="back-link">← All Destinations</a>
+    <span class="dest-tagline">The White City</span>
+    <h1>Casablanca</h1>
+    <p>Morocco's economic heartbeat pulses with energy, ambition and style. Casablanca is where Art Deco architecture meets roo...</p>
+    <div style="display:flex;gap:1rem">
+      <a href="contact.html" class="btn-primary">Plan This Trip</a>
+      <a href="#highlights" class="btn-outline">See Highlights</a>
+    </div>
+  </div>
+</div>
+
+<div class="meta-bar">
+  <div class="meta-item"><div class="meta-label">Best for</div><div class="meta-value">Urban explorers, architecture lovers, business travelers</div></div>
+  <div class="meta-item"><div class="meta-label">Best time to visit</div><div class="meta-value">Year-round</div></div>
+  <div class="meta-item"><div class="meta-label">Recommended stay</div><div class="meta-value">1–2 days recommended</div></div>
+</div>
+
+<section class="content-section">
+  <div class="content-grid">
+    <div class="reveal">
+      <span class="section-eyebrow">About Casablanca</span>
+      <h2 class="section-title">Discover <em>Casablanca</em></h2>
+      <p class="content-desc">Morocco's economic heartbeat pulses with energy, ambition and style. Casablanca is where Art Deco architecture meets rooftop bars, where the world's second-largest mosque rises fro...</p>
+      <p class="content-body">Morocco's economic heartbeat pulses with energy, ambition and style. Casablanca is where Art Deco architecture meets rooftop bars, where the world's second-largest mosque rises from the Atlantic, and where tradition and modernity negotiate a fascinating coexistence.</p>
+      <a href="contact.html" class="btn-primary" style="margin-top:1rem">Plan Your Visit</a>
+    </div>
+    <div class="img-mosaic reveal r2">
+      <img src="https://images.unsplash.com/photo-1563194071697-71c48f0f9dd4?w=800&q=85" alt="Casablanca" style="grid-row:span 2;height:460px;object-fit:cover">
+      <img src="https://images.unsplash.com/photo-1597466599360-3b9775841aec?w=800&q=85" alt="Casablanca experience" style="height:220px;object-fit:cover">
+    </div>
+  </div>
+</section>
+
+<section class="highlights-section" id="highlights">
+  <div class="highlights-inner">
+    <div class="reveal">
+      <span class="section-eyebrow">Experiences</span>
+      <h2 class="section-title">What to <em>discover</em></h2>
+    </div>
+    <div class="highlights-grid">
+      <div class="highlight-item reveal r1"><div class="highlight-num">01</div><div class="highlight-text">Hassan II Mosque — world's 3rd largest</div></div>
+<div class="highlight-item reveal r2"><div class="highlight-num">02</div><div class="highlight-text">Art Deco district walking tour</div></div>
+<div class="highlight-item reveal r3"><div class="highlight-num">03</div><div class="highlight-text">Rick's Café for a cocktail</div></div>
+<div class="highlight-item reveal r1"><div class="highlight-num">04</div><div class="highlight-text">Corniche waterfront promenade</div></div>
+<div class="highlight-item reveal r2"><div class="highlight-num">05</div><div class="highlight-text">Twin Center & modern Casablanca</div></div>
+<div class="highlight-item reveal r3"><div class="highlight-num">06</div><div class="highlight-text">La Sqala restaurant — traditional dining</div></div>
+
+    </div>
+  </div>
+</section>
+
+<div class="quote-section reveal">
+  <p class="quote-text">"Casablanca is Morocco at its most cosmopolitan — a city that has always looked both east and west."</p>
+  <div class="quote-dash"></div>
+  <p style="font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.55)">Moroccan Experience</p>
+</div>
+
+<section class="cta-section">
+  <div class="cta-inner reveal">
+    <span class="section-eyebrow" style="text-align:center;display:block">Ready to go?</span>
+    <h2>Start planning your <em>Casablanca</em> journey</h2>
+    <p>Our team of local experts will craft a personalized itinerary for you — from intimate riad stays to immersive cultural encounters.</p>
+    <div class="cta-btns">
+      <a href="contact.html" class="btn-primary">Plan This Trip</a>
+      <a href="destinations.html" style="display:inline-block;padding:0.9rem 2.25rem;border:1px solid var(--border);color:var(--muted);text-decoration:none;font-size:0.75rem;letter-spacing:0.2em;text-transform:uppercase;border-radius:2px">All Destinations</a>
+    </div>
+  </div>
+</section>
+
+<section class="more-dest">
+  <div class="more-dest-inner reveal">
+    <span class="section-eyebrow">Explore More</span>
+    <h2 class="section-title">Other <em>destinations</em></h2>
+    <div class="dest-row">
+      <a href="destination-marrakech.html" class="mini-dest"><div class="mini-dest-img" style="background-image:url('https://images.unsplash.com/photo-1597466599360-3b9775841aec?w=400&q=80')"></div><div class="mini-dest-body"><div class="mini-dest-name">Marrakech</div></div></a>
+      <a href="destination-fes.html" class="mini-dest"><div class="mini-dest-img" style="background-image:url('https://images.unsplash.com/photo-1553899017-5c7fa319c65d?w=400&q=80')"></div><div class="mini-dest-body"><div class="mini-dest-name">Fes</div></div></a>
+      <a href="destination-sahara.html" class="mini-dest"><div class="mini-dest-img" style="background-image:url('https://images.unsplash.com/photo-1548869190-a90e48b0e0e4?w=400&q=80')"></div><div class="mini-dest-body"><div class="mini-dest-name">The Sahara</div></div></a>
+      <a href="destination-chefchaouen.html" class="mini-dest"><div class="mini-dest-img" style="background-image:url('https://images.unsplash.com/photo-1512753360435-329c4ec65687?w=400&q=80')"></div><div class="mini-dest-body"><div class="mini-dest-name">Chefchaouen</div></div></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div><div class="footer-brand">Moroccan<span>Experience</span></div><p class="footer-desc">Morocco, curated for the world. Bespoke journeys designed by locals, for every kind of traveler.</p></div>
+    <div><div class="footer-col-title">Offerings</div><ul class="footer-links"><li><a href="offerings.html#tailored">Tailored Travel</a></li><li><a href="offerings.html#affinity">Affinity Travel</a></li><li><a href="offerings.html#departures">Fixed Departures</a></li><li><a href="offerings.html#mice">Corporate & MICE</a></li><li><a href="offerings.html#weddings">Weddings</a></li></ul></div>
+    <div><div class="footer-col-title">Destinations</div><ul class="footer-links"><li><a href="destination-marrakech.html">Marrakech</a></li><li><a href="destination-fes.html">Fes</a></li><li><a href="destination-sahara.html">The Sahara</a></li><li><a href="destinations.html">All Destinations</a></li></ul></div>
+    <div><div class="footer-col-title">Company</div><ul class="footer-links"><li><a href="about.html">About Us</a></li><li><a href="blog.html">Journal</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><div class="footer-copy">© 2024 MoroccanExperience. All rights reserved.</div><div class="footer-socials"><a href="#">Instagram</a><a href="#">Facebook</a><a href="#">LinkedIn</a></div></div>
+</footer>
+<script>
+  document.querySelectorAll('.reveal').forEach(el=>new IntersectionObserver(([e])=>{if(e.isIntersecting)e.target.classList.add('visible')},{threshold:0.1}).observe(el));
+
+const items = document.querySelectorAll('.gallery-item');
+const lb = document.getElementById('lightbox');
+const lbImg = document.getElementById('lb-img');
+let cur = 0;
+const imgs = [...items].map(i => i.querySelector('.gallery-img').src);
+
+items.forEach((item, i) => {
+  item.addEventListener('click', () => { cur = i; lbImg.src = imgs[i]; lb.classList.add('active'); });
+});
+document.getElementById('lb-close').addEventListener('click', () => lb.classList.remove('active'));
+document.getElementById('lb-prev').addEventListener('click', () => { cur = (cur - 1 + imgs.length) % imgs.length; lbImg.src = imgs[cur]; });
+document.getElementById('lb-next').addEventListener('click', () => { cur = (cur + 1) % imgs.length; lbImg.src = imgs[cur]; });
+lb.addEventListener('click', e => { if(e.target === lb) lb.classList.remove('active'); });
+document.addEventListener('keydown', e => {
+  if(!lb.classList.contains('active')) return;
+  if(e.key === 'ArrowLeft') { cur = (cur-1+imgs.length)%imgs.length; lbImg.src = imgs[cur]; }
+  if(e.key === 'ArrowRight') { cur = (cur+1)%imgs.length; lbImg.src = imgs[cur]; }
+  if(e.key === 'Escape') lb.classList.remove('active');
+});
+
+</script>
+</body>
+</html>

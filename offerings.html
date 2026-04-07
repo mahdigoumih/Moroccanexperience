@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Offerings — Moroccan Experience</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--t:#C1440E;--td:#9A350A;--ink:#1A1410;--sand:#F5EDD8;--gold:#D4AF37;--ww:#FDFAF5;--m:#7A6B5A;--b:rgba(26,20,16,0.12)}
+body{font-family:'DM Sans',sans-serif;background:var(--ww);color:var(--ink);font-weight:300;line-height:1.7;overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.25rem 3rem;display:flex;align-items:center;justify-content:space-between;background:rgba(253,250,245,0.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--b)}
+.nl{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink);text-decoration:none}
+.nl span{color:var(--t)}
+nav ul{display:flex;gap:2rem;list-style:none}
+nav ul a{font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;text-decoration:none;color:var(--m);transition:color 0.2s}
+nav ul a:hover,nav ul a.active{color:var(--t)}
+.nc{padding:0.55rem 1.25rem;border:1px solid var(--t);color:var(--t)!important;border-radius:2px}
+.nc:hover{background:var(--t)!important;color:white!important}
+.hero{height:65vh;min-height:480px;position:relative;display:flex;align-items:flex-end;overflow:hidden}
+.hbg{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(26,20,16,0.15) 0%,rgba(26,20,16,0.7) 100%),url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1800&q=85') center/cover no-repeat}
+.hc{position:relative;z-index:2;padding:0 3rem 4rem;max-width:760px;opacity:0;animation:fu 1s 0.3s ease forwards}
+@keyframes fu{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.ey{font-size:0.65rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:1rem;display:block}
+h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,5vw,4.5rem);font-weight:300;line-height:1.05;color:white;margin-bottom:1rem}
+h1 em{font-style:italic;color:var(--gold)}
+.hsub{font-size:1rem;color:rgba(255,255,255,0.8);max-width:460px}
+.ot{background:var(--ink);padding:1.5rem 3rem;display:flex;gap:2rem;justify-content:center;flex-wrap:wrap}
+.ot a{font-size:0.68rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.55);text-decoration:none;transition:color 0.2s}
+.ot a:hover{color:var(--gold)}
+.offering{padding:6rem 3rem;max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;border-bottom:1px solid var(--b)}
+.offering:last-of-type{border-bottom:none}
+.offering.flip{direction:rtl}
+.offering.flip>*{direction:ltr}
+.oimg{height:480px;border-radius:3px;background-size:cover;background-position:center}
+.onum{font-family:'Cormorant Garamond',serif;font-size:5rem;font-weight:300;color:rgba(193,68,14,0.1);line-height:1;margin-bottom:0.5rem}
+.otitle{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;margin-bottom:1rem}
+.otitle em{font-style:italic;color:var(--t)}
+.odesc{font-size:0.95rem;color:var(--m);line-height:1.85;margin-bottom:1.25rem}
+.olist{list-style:none;display:flex;flex-direction:column;gap:0.5rem;margin-bottom:1.75rem}
+.olist li{font-size:0.875rem;color:var(--m);padding-left:1.2rem;position:relative}
+.olist li::before{content:'—';position:absolute;left:0;color:var(--t);font-size:0.8rem}
+.bp{display:inline-block;padding:0.9rem 2.25rem;background:var(--t);color:white;text-decoration:none;font-size:0.75rem;letter-spacing:0.2em;text-transform:uppercase;font-weight:500;border-radius:2px;transition:background 0.3s}
+.bp:hover{background:var(--td)}
+.cta-band{background:var(--t);padding:5rem 3rem;text-align:center}
+.cta-band h2{font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:300;color:white;margin-bottom:1rem}
+.cta-band h2 em{font-style:italic}
+.cta-band p{color:rgba(255,255,255,0.75);font-size:0.95rem;max-width:520px;margin:0 auto 2rem}
+.bw{display:inline-block;padding:0.9rem 2.25rem;border:1px solid rgba(255,255,255,0.5);color:white;text-decoration:none;font-size:0.75rem;letter-spacing:0.2em;text-transform:uppercase;border-radius:2px}
+footer{background:var(--ink);border-top:1px solid rgba(255,255,255,0.07);padding:3rem}
+.fi{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:2.5rem}
+.fb{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:white;margin-bottom:1rem}
+.fb span{color:var(--t)}
+.fd{font-size:0.82rem;color:rgba(255,255,255,0.38);line-height:1.8;max-width:260px}
+.fct{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.3);font-weight:500;margin-bottom:1.25rem}
+.fl{list-style:none;display:flex;flex-direction:column;gap:0.65rem}
+.fl a{color:rgba(255,255,255,0.5);text-decoration:none;font-size:0.85rem;font-weight:300;transition:color 0.2s}
+.fl a:hover{color:var(--t)}
+.fbot{max-width:1200px;margin:0 auto;padding-top:2rem;border-top:1px solid rgba(255,255,255,0.08);display:flex;justify-content:space-between;align-items:center}
+.fc{font-size:0.75rem;color:rgba(255,255,255,0.22)}
+.fs{display:flex;gap:1.25rem}
+.fs a{font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.32);text-decoration:none;transition:color 0.2s}
+.fs a:hover{color:var(--t)}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity 0.6s ease,transform 0.6s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.r1{transition-delay:0.15s}.r2{transition-delay:0.25s}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nl">Moroccan<span>Experience</span></a>
+  <ul>
+    <li><a href="destinations.html">Destinations</a></li>
+    <li><a href="offerings.html" class="active">Offerings</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="blog.html">Journal</a></li>
+    <li><a href="contact.html" class="nc">Plan Your Trip</a></li>
+  </ul>
+</nav>
+
+<div class="hero">
+  <div class="hbg"></div>
+  <div class="hc">
+    <span class="ey">What we offer</span>
+    <h1>Every kind of <em>journey</em></h1>
+    <p class="hsub">From intimate tailored experiences to grand corporate events — we design Morocco for every traveler.</p>
+  </div>
+</div>
+
+<div class="ot">
+  <a href="#tailored">Tailored Travel</a>
+  <a href="#affinity">Affinity Travel</a>
+  <a href="#departures">Fixed Departures</a>
+  <a href="#mice">MICE & Corporate</a>
+  <a href="#weddings">Weddings</a>
+  <a href="#women">Women's Journeys</a>
+</div>
+
+<div class="offering reveal" id="tailored">
+  <div class="oimg" style="background-image:url('https://images.unsplash.com/photo-1539020140153-e479b8c22e70?w=800&q=85')"></div>
+  <div>
+    <div class="onum">01</div>
+    <h2 class="otitle">Tailored <em>Travel</em></h2>
+    <p class="odesc">Each traveler is unique, so their experience should be too. We are committed to making your travel vision a reality by delivering fully-customized journeys.</p>
+    <p class="odesc">Whether you want a leather etching workshop with a local craftsman, cooking authentic couscous with a Berber family, or stargazing in the Sahara — we know how to create it.</p>
+    <ul class="olist">
+      <li>100% custom itineraries built around your interests</li>
+      <li>Dedicated travel specialist throughout</li>
+      <li>Private guides, drivers, and local experts</li>
+      <li>All accommodations hand-selected</li>
+    </ul>
+    <a href="contact.html" class="bp">Inquire Now</a>
+  </div>
+</div>
+
+<div class="offering flip reveal" id="affinity" style="background:var(--sand)">
+  <div class="oimg" style="background-image:url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&q=85')"></div>
+  <div>
+    <div class="onum">02</div>
+    <h2 class="otitle">Affinity <em>Travel</em></h2>
+    <p class="odesc">Travel is about more than just the destination. Affinity travel creates journeys where like-minded travelers connect through themed explorations of Morocco.</p>
+    <p class="odesc">From cuisine, artisanship, architecture, wellness, adventure, and history — Morocco has experiences to match every passion and interest.</p>
+    <ul class="olist">
+      <li>Cuisine & food market tours</li>
+      <li>Architecture & design-focused itineraries</li>
+      <li>Yoga & wellness retreats</li>
+      <li>Photography expeditions</li>
+    </ul>
+    <a href="contact.html" class="bp">Find Your Group</a>
+  </div>
+</div>
+
+<div class="offering reveal" id="departures">
+  <div class="oimg" style="background-image:url('https://images.unsplash.com/photo-1548869190-a90e48b0e0e4?w=800&q=85')"></div>
+  <div>
+    <div class="onum">03</div>
+    <h2 class="otitle">Fixed <em>Departures</em></h2>
+    <p class="odesc">Our small group trips offer guests an immersive exploration of Morocco at a budget-friendly price. These trips follow a pre-arranged 8-night itinerary with no more than 10 travelers.</p>
+    <p class="odesc">Trips depart on the first Saturday of every month — even with just one participant, so there is no need to worry about reaching a minimum.</p>
+    <ul class="olist">
+      <li>Max 10 travelers per group</li>
+      <li>8-night curated itinerary</li>
+      <li>Departures every first Saturday</li>
+      <li>Pre & post-trip extensions available</li>
+    </ul>
+    <a href="contact.html" class="bp">See Departures</a>
+  </div>
+</div>
+
+<div class="offering flip reveal" id="mice" style="background:var(--sand)">
+  <div class="oimg" style="background-image:url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=85')"></div>
+  <div>
+    <div class="onum">04</div>
+    <h2 class="otitle">MICE & <em>Corporate</em></h2>
+    <p class="odesc">Morocco is a leading destination for corporate and professional events — easily accessible from Europe, the Americas, and the Gulf, with extraordinary diversity of landscapes and venues.</p>
+    <p class="odesc">We have organized events for Google, Harvard Business School, Estée Lauder, OCP, and many leading international companies.</p>
+    <ul class="olist">
+      <li>Team-building retreats & incentive travel</li>
+      <li>Conferences, meetings & summits</li>
+      <li>Exclusive dinners & cultural experiences</li>
+      <li>End-to-end logistics management</li>
+    </ul>
+    <a href="contact.html" class="bp">Plan Your Event</a>
+  </div>
+</div>
+
+<div class="offering reveal" id="weddings">
+  <div class="oimg" style="background-image:url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=85')"></div>
+  <div>
+    <div class="onum">05</div>
+    <h2 class="otitle">Destination <em>Weddings</em></h2>
+    <p class="odesc">Morocco is the perfect destination to celebrate your love. Year-round sunshine, spectacular venues, and vibrant nuptial traditions make for an unforgettable celebration.</p>
+    <p class="odesc">Whether on a tranquil beach, in a blooming Andalusian garden, a secluded desert riad, or a luxurious city palace — we handle every detail.</p>
+    <ul class="olist">
+      <li>Riad, desert, beach & garden venues</li>
+      <li>Full event coordination</li>
+      <li>Honeymoon extensions</li>
+      <li>Guest accommodation management</li>
+    </ul>
+    <a href="contact.html" class="bp">Begin Planning</a>
+  </div>
+</div>
+
+<div class="offering flip reveal" id="women" style="background:var(--sand)">
+  <div class="oimg" style="background-image:url('https://images.unsplash.com/photo-1502680390469-be75c86b636f?w=800&q=85')"></div>
+  <div>
+    <div class="onum">06</div>
+    <h2 class="otitle">Women's <em>Journeys</em></h2>
+    <p class="odesc">We understand Morocco can feel intimidating as a solo female traveler. Our specialized all-women's group trips offer female explorers the chance to travel with security and support — without sacrificing cultural immersion.</p>
+    <ul class="olist">
+      <li>All-women groups, expert female guides</li>
+      <li>Safe, curated accommodations</li>
+      <li>Immersive local experiences</li>
+      <li>Community of like-minded travelers</li>
+    </ul>
+    <a href="contact.html" class="bp">Join a Journey</a>
+  </div>
+</div>
+
+<div class="cta-band reveal">
+  <h2>Ready to <em>experience Morocco?</em></h2>
+  <p>Our team is ready to craft your perfect journey. Tell us your dream and we'll make it happen.</p>
+  <a href="contact.html" class="bw">Get in Touch</a>
+</div>
+
+<footer>
+  <div class="fi">
+    <div><div class="fb">Moroccan<span>Experience</span></div><p class="fd">Morocco, curated for the world. Bespoke journeys designed by locals, for every kind of traveler.</p></div>
+    <div><div class="fct">Offerings</div><ul class="fl"><li><a href="offerings.html#tailored">Tailored Travel</a></li><li><a href="offerings.html#affinity">Affinity Travel</a></li><li><a href="offerings.html#departures">Fixed Departures</a></li><li><a href="offerings.html#mice">Corporate & MICE</a></li><li><a href="offerings.html#weddings">Weddings</a></li></ul></div>
+    <div><div class="fct">Destinations</div><ul class="fl"><li><a href="destination-marrakech.html">Marrakech</a></li><li><a href="destination-fes.html">Fes</a></li><li><a href="destination-sahara.html">The Sahara</a></li><li><a href="destinations.html">All Destinations</a></li></ul></div>
+    <div><div class="fct">Company</div><ul class="fl"><li><a href="about.html">About Us</a></li><li><a href="blog.html">Journal</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+  </div>
+  <div class="fbot"><div class="fc">© 2024 MoroccanExperience. All rights reserved.</div><div class="fs"><a href="#">Instagram</a><a href="#">Facebook</a><a href="#">LinkedIn</a></div></div>
+</footer>
+<script>document.querySelectorAll('.reveal').forEach(el=>new IntersectionObserver(([e])=>{if(e.isIntersecting)e.target.classList.add('visible')},{threshold:0.08}).observe(el));</script>
+</body></html>
