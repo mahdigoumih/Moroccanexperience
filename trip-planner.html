@@ -301,104 +301,145 @@ function getInterests() {
   return [...document.querySelectorAll('.interest-tag.selected')].map(t => t.dataset.val).join(', ') || 'general sightseeing';
 }
 
+// FIX 1: Proper markdown→HTML converter (no broken /s flag, correct list wrapping)
 function markdownToHtml(md) {
-  return md
-    .replace(/^### (.+)$/gm, '<h3>$1</h3>')
-    .replace(/^## (.+)$/gm, '<h3>$1</h3>')
-    .replace(/^# (.+)$/gm, '<h3>$1</h3>')
-    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-    .replace(/\*(.+?)\*/g, '<em>$1</em>')
-    .replace(/^- (.+)$/gm, '<li>$1</li>')
-    .replace(/(<li>.*<\/li>)/s, '<ul>$1</ul>')
-    .replace(/(<li>[\s\S]*?<\/li>)+/g, m => '<ul>' + m + '</ul>')
-    .replace(/\n\n/g, '</p><p>')
-    .replace(/^(?!<[hup])/gm, '')
-    .replace(/<p><\/p>/g, '')
-    .replace(/<p>(<[hul])/g, '$1')
-    .replace(/(<\/[hul][^>]*>)<\/p>/g, '$1');
+  var html = md;
+  // Headers
+  html = html.replace(/^### (.+)$/gm, '<h3>$1</h3>');
+  html = html.replace(/^## (.+)$/gm, '<h3>$1</h3>');
+  html = html.replace(/^# (.+)$/gm, '<h3>$1</h3>');
+  // Bold & italic
+  html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+  html = html.replace(/\*([^*\n]+?)\*/g, '<em>$1</em>');
+  // List items — collect consecutive, wrap in <ul>
+  var lines = html.split('\n');
+  var out = [];
+  var inList = false;
+  for (var i = 0; i < lines.length; i++) {
+    var line = lines[i];
+    var listMatch = line.match(/^[-•]\s+(.+)$/);
+    if (listMatch) {
+      if (!inList) { out.push('<ul>'); inList = true; }
+      out.push('<li>' + listMatch[1] + '</li>');
+    } else {
+      if (inList) { out.push('</ul>'); inList = false; }
+      out.push(line);
+    }
+  }
+  if (inList) out.push('</ul>');
+  html = out.join('\n');
+  // Paragraphs — wrap non-tag lines
+  var finalLines = html.split('\n');
+  var result = [];
+  for (var j = 0; j < finalLines.length; j++) {
+    var l = finalLines[j].trim();
+    if (!l) continue;
+    if (l.match(/^<[hul]/)) { result.push(l); }
+    else { result.push('<p>' + l + '</p>'); }
+  }
+  return result.join('\n');
 }
 
+// FIX 2: CORS-safe API call using a CORS proxy + correct model + higher token limit
 async function generateItinerary() {
-  const btn = document.getElementById('generateBtn');
-  const spinner = document.getElementById('spinner');
-  const btnText = document.getElementById('btnText');
-  const duration = document.getElementById('duration').value;
-  const groupsize = document.getElementById('groupsize').value;
-  const style = document.getElementById('style').value;
-  const interests = getInterests();
-  const month = document.getElementById('month').value;
-  const notes = document.getElementById('notes').value;
+  var btn = document.getElementById('generateBtn');
+  var spinner = document.getElementById('spinner');
+  var btnText = document.getElementById('btnText'); // FIX 3: direct reference, not querySelector inside btn
+  var duration = document.getElementById('duration').value;
+  var groupsize = document.getElementById('groupsize').value;
+  var travelStyle = document.getElementById('style').value;
+  var interests = getInterests();
+  var month = document.getElementById('month').value;
+  var notes = document.getElementById('notes').value.trim();
 
   btn.disabled = true;
   spinner.classList.add('active');
-  btnText.textContent = 'Creating your itinerary...';
+  btnText.textContent = 'Creating your itinerary…';
   document.getElementById('placeholder').style.display = 'flex';
   document.getElementById('itinerary').style.display = 'none';
 
-  const prompt = `You are a luxury Morocco travel expert for MoroccanExperience agency. Create a detailed, inspiring ${duration}-day Morocco itinerary for a ${groupsize} traveling in ${month}.
-
-Travel style: ${style}
-Interests: ${interests}
-Special requests: ${notes || 'None'}
-
-Format the response as:
-1. A catchy trip title (one line, poetic)
-2. A brief intro paragraph (2-3 sentences, evocative)
-3. Day-by-day itinerary using ### Day X: [City] — [Theme] as headers
-4. For each day: morning, afternoon, evening activities. Be specific with places, experiences, and local tips.
-5. End with a ## Practical Tips section (5 bullet points specific to this trip)
-
-Use markdown formatting. Be warm, expert, and inspiring — not generic. Mention specific riads, restaurants, and hidden gems where relevant. Keep the tone of a knowledgeable local friend.`;
+  var prompt = 'You are a luxury Morocco travel expert for MoroccanExperience agency. Create a detailed, inspiring ' + duration + '-day Morocco itinerary for a ' + groupsize + ' traveling in ' + month + '.\n\nTravel style: ' + travelStyle + '\nInterests: ' + interests + '\nSpecial requests: ' + (notes || 'None') + '\n\nFormat the response as:\n1. A poetic trip title (first line, no hash symbol)\n2. A brief evocative intro paragraph (2-3 sentences)\n3. Day-by-day itinerary using ### Day X: [City] — [Theme] as headers\n4. For each day: morning, afternoon, evening activities with specific places, riads, restaurants and local tips\n5. End with ### Practical Tips with 5 bullet points specific to this trip\n\nBe warm, expert, inspiring and specific — like a knowledgeable local friend. Use markdown bold for place names.';
 
   try {
-    const response = await fetch('https://api.anthropic.com/v1/messages', {
+    // FIX 4: Use allorigins CORS proxy to forward to Anthropic API
+    // In production, replace with your own backend endpoint
+    var apiUrl = 'https://api.anthropic.com/v1/messages';
+    var proxyUrl = 'https://corsproxy.io/?' + encodeURIComponent(apiUrl);
+
+    var response = await fetch(proxyUrl, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': 'REPLACE_WITH_YOUR_API_KEY', // ← Set your Anthropic API key here
+        'anthropic-version': '2023-06-01'
+      },
       body: JSON.stringify({
-        model: 'claude-sonnet-4-20250514',
-        max_tokens: 1000,
+        model: 'claude-sonnet-4-5', // FIX 5: correct model name
+        max_tokens: 2048,           // FIX 2: enough for full itinerary
         messages: [{ role: 'user', content: prompt }]
       })
     });
 
-    const data = await response.json();
-    const text = data.content?.[0]?.text || '';
-    const lines = text.split('\n');
-    const title = lines[0].replace(/^#+\s*/, '').replace(/\*+/g, '').trim() || 'Your Morocco Journey';
-    const body = lines.slice(1).join('\n');
+    if (!response.ok) {
+      throw new Error('API error: ' + response.status);
+    }
+
+    var data = await response.json();
+    var text = (data.content && data.content[0] && data.content[0].text) ? data.content[0].text : '';
+    if (!text) throw new Error('Empty response');
+
+    var lines = text.split('\n');
+    // Extract title — first non-empty line, strip markdown symbols
+    var titleLine = '';
+    var bodyStart = 0;
+    for (var i = 0; i < lines.length; i++) {
+      var clean = lines[i].replace(/^#+\s*/, '').replace(/\*+/g, '').trim();
+      if (clean) { titleLine = clean; bodyStart = i + 1; break; }
+    }
+    var title = titleLine || 'Your Morocco Journey';
+    var body = lines.slice(bodyStart).join('\n');
 
     document.getElementById('itin-title').textContent = title;
-    document.getElementById('itin-meta').innerHTML = `
-      <div class="itin-meta-item"><strong>${duration} Days</strong>Duration</div>
-      <div class="itin-meta-item"><strong>${groupsize}</strong>Travelers</div>
-      <div class="itin-meta-item"><strong>${month}</strong>Departure</div>
-      <div class="itin-meta-item"><strong>${style}</strong>Style</div>
-    `;
+    document.getElementById('itin-meta').innerHTML =
+      '<div class="itin-meta-item"><strong>' + duration + ' Days</strong>Duration</div>' +
+      '<div class="itin-meta-item"><strong>' + groupsize + '</strong>Travelers</div>' +
+      '<div class="itin-meta-item"><strong>' + month + '</strong>Departure</div>' +
+      '<div class="itin-meta-item"><strong>' + travelStyle + '</strong>Style</div>';
+
     document.getElementById('itin-body').innerHTML = markdownToHtml(body);
 
-    // WhatsApp share
-    const waText = encodeURIComponent(`Hi MoroccanExperience! I generated this itinerary:\n\n${title}\n${duration} days · ${groupsize} · ${month}\nInterests: ${interests}\n\nCan you help me book this trip?`);
-    document.getElementById('wa-share').href = `https://wa.me/212600000000?text=${waText}`;
+    // WhatsApp share with itinerary summary
+    var waText = encodeURIComponent('Hi MoroccanExperience! I used your AI planner and got this itinerary:\n\n' + title + '\n' + duration + ' days · ' + groupsize + ' · ' + month + '\nInterests: ' + interests + '\n\nCan you help me book this trip?');
+    document.getElementById('wa-share').href = 'https://wa.me/212600000000?text=' + waText;
 
     document.getElementById('placeholder').style.display = 'none';
     document.getElementById('itinerary').style.display = 'block';
-    document.getElementById('tips').style.marginTop = '1.5rem';
 
   } catch(err) {
-    document.getElementById('itin-body').innerHTML = '<p style="color:var(--t)">Something went wrong. Please try again or contact us directly via WhatsApp.</p>';
+    console.error('Planner error:', err);
+    // Show a helpful error with WhatsApp fallback
+    document.getElementById('itin-title').textContent = 'Almost there!';
+    document.getElementById('itin-meta').innerHTML = '';
+    document.getElementById('itin-body').innerHTML =
+      '<p style="color:var(--t);font-weight:500">To use the AI Planner, add your Anthropic API key to the code (search for REPLACE_WITH_YOUR_API_KEY).</p>' +
+      '<p>In the meantime, contact us directly — our team will create your custom itinerary within 24 hours.</p>' +
+      '<p><strong>Your selections:</strong> ' + duration + ' days · ' + groupsize + ' · ' + month + ' · ' + interests + '</p>';
     document.getElementById('placeholder').style.display = 'none';
     document.getElementById('itinerary').style.display = 'block';
   }
 
+  // FIX 6: Always re-enable button and reset text, even on error
   btn.disabled = false;
   spinner.classList.remove('active');
   btnText.textContent = 'Generate New Itinerary';
 }
 
+// FIX 3: resetForm uses direct getElementById, not querySelector inside btn
 function resetForm() {
   document.getElementById('itinerary').style.display = 'none';
   document.getElementById('placeholder').style.display = 'flex';
-  document.getElementById('generateBtn').querySelector('#btnText').textContent = 'Generate My Itinerary';
+  document.getElementById('btnText').textContent = 'Generate My Itinerary';
+  document.getElementById('generateBtn').disabled = false;
 }
 </script>
 </body>
